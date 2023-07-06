@@ -1,0 +1,25 @@
+services:
+  # A backend service
+  - type: web
+    name: dddform-staging
+    runtime: node
+    repo: https://github.com/stemmlerjs/ddd-forum-test
+    rootDir: backend
+    buildCommand: npm run build:ci
+    startCommand: npm run start:ci
+    buildFilter:
+      paths:
+      - src/**/*.ts
+      - test/**/*.ts
+    # envVars:
+    #   - key: REDIS_HOST
+    #     fromService:
+    #       type: redis
+    #       name: lightning
+    #       property: host # available properties are listed below
+    #   - key: REDIS_PORT
+    #     fromService:
+    #       type: redis
+    #       name: lightning
+    #       property: port
+    #   - fromGroup: conc-settings
