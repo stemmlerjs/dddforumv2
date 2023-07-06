@@ -4,7 +4,7 @@
   "description": "A basic typescript app starter for 2023.",
   "main": "index.js",
   "engines": {
-    "node": "16.16.0"
+    "node": ">=16.16"
   },
   "scripts": {
     "build": "rimraf ./build && npx tsc",
