@@ -1,0 +1,27 @@
+name: Commit Phase
+
+on:
+  push:
+    branches:
+      - main # or specify your desired branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16.16
+
+      - name: Build 
+        run: cd backend && npm build:ci
+
+      - name: Run core (unit) tests
+        run: npm test:core
+
+      
