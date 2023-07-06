@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "A basic typescript app starter for 2023.",
   "main": "index.js",
+  "engines": {
+    "node": "16.16.0"
+  },
   "scripts": {
     "build": "rimraf ./build && tsc",
     "start:dev": "npx nodemon",
