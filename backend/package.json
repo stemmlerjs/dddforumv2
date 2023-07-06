@@ -7,7 +7,7 @@
     "node": "16.16.0"
   },
   "scripts": {
-    "build": "rimraf ./build && tsc",
+    "build": "rimraf ./build && npx tsc",
     "start:ci": "npm ci && npm run build && npm run migrate && node build/index.js",
     "start:dev": "npx nodemon",
     "migrate": "npx prisma db push --schema src/shared/infra/persistence/prisma/schema.prisma",
