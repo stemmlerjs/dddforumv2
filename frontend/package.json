@@ -17,8 +17,8 @@
   },
   "scripts": {
     "start": "PORT=3001 react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "build:ci": "react-scripts build",
+    "test:core": "react-scripts test",
     "test:dev": "react-scripts test",
     "test:e2e": "jest -c jest.config.e2e.js",
     "test:e2e:dev": "jest -c jest.config.e2e.js --watch",
