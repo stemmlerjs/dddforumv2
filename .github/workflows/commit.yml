@@ -22,7 +22,7 @@ jobs:
         run: cd backend && npm run build:ci
 
       - name: Test backend (core unit tests)
-        run: cd frontend && npm run test:core
+        run: cd backend && npm run test:core
 
   build-and-test-front:
     runs-on: ubuntu-latest
@@ -39,7 +39,7 @@ jobs:
       - name: Build frontend
         run: cd frontend && npm run build:ci
 
-      - name: Test backend (core unit tests)
+      - name: Test frontend (core unit tests)
         run: cd frontend && npm run test:core
 
       
