@@ -6,7 +6,7 @@ on:
       - main # or specify your desired branch
 
 jobs:
-  build:
+  build & test (back):
     runs-on: ubuntu-latest
 
     steps:
@@ -22,6 +22,24 @@ jobs:
         run: cd backend && npm run build:ci
 
       - name: Test backend (core unit tests)
-        run: cd backend && npm run test:core
+        run: cd frontend && npm run test:core
+
+  test & test (front):
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16.16
+
+      - name: Build frontend
+        run: cd frontend && npm run build:ci
+
+      - name: Test backend (core unit tests)
+        run: cd frontend && npm run test:core
 
       
