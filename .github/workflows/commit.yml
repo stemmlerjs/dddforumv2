@@ -19,7 +19,7 @@ jobs:
           node-version: 16.16
 
       - name: Build 
-        run: cd backend && npm build:ci
+        run: cd backend && npm run build:ci
 
       - name: Run core (unit) tests
         run: npm test:core
