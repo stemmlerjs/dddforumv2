@@ -6,7 +6,7 @@ on:
       - main # or specify your desired branch
 
 jobs:
-  build & test (back):
+  build-and-test-back:
     runs-on: ubuntu-latest
 
     steps:
@@ -24,7 +24,7 @@ jobs:
       - name: Test backend (core unit tests)
         run: cd frontend && npm run test:core
 
-  test & test (front):
+  build-and-test-front:
     runs-on: ubuntu-latest
 
     steps:
