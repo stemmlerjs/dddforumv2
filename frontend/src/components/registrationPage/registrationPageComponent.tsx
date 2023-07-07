@@ -8,7 +8,7 @@ export interface RegistrationFormProps {
   email: string;
   firstName: string;
   lastName: string;
-  userName: string;
+  username: string;
 }
 
 const RegistrationPageComponent = () => {
@@ -17,7 +17,7 @@ const RegistrationPageComponent = () => {
     email: "",
     firstName: "",
     lastName: "",
-    userName: "",
+    username: "",
   });
 
   function onFormStateChanged(newState: string, field: string) {
@@ -96,7 +96,7 @@ const RegistrationPageComponent = () => {
       />
       <input
         onChange={(e) => onFormStateChanged(e.target.value, "userName")}
-        value={formState.userName}
+        value={formState.username}
         className="username registration"
         type="text"
       />

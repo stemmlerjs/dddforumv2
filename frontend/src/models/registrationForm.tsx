@@ -14,14 +14,14 @@ export class RegistrationForm {
     if (!props.email.includes('@')) return new Error('Invalid email');
     if (props.firstName.length < 1 || props.firstName.length > 20) return new Error('Invalid firstName');
     if (props.lastName.length < 1 || props.lastName.length > 20) return new Error('Invalid lastName');
-    if (props.userName.length < 1 || props.lastName.length > 20) return new Error('Invalid username');
+    if (props.username.length < 1 || props.lastName.length > 20) return new Error('Invalid username');
 
     return new RegistrationForm(props);
   }
 
   public toCreateUserDTO () {
     return {
-      username: this.props.userName,
+      username: this.props.username,
       firstName: this.props.firstName,
       lastName: this.props.lastName,
       email: this.props.email
