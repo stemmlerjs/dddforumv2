@@ -31,7 +31,7 @@ jobs:
           name: backend-build-${{ github.run_number }}-${{ github.run_id }}
           path: ./backend/build
           # Customize Artifact Retention Period
-		      retention-days: 2
+          retention-days: 2
 
   build-and-test-front:
     runs-on: ubuntu-latest
@@ -58,7 +58,7 @@ jobs:
           name: frontend-build-${{ github.run_number }}-${{ github.run_id }}
           path: ./frontend/build
           # Customize Artifact Retention Period
-		      retention-days: 2
+          retention-days: 2
 
   publish:
     needs: [build-and-test-front, build-and-test-back]
@@ -88,15 +88,3 @@ jobs:
           zip -r package.zip .
           mv package.zip ../package.zip
           rm -rf ../dist
-          
-  # staging:
-  #   needs: publish
-
-  # acceptance:
-  #   needs: staging
-
-  # deploy:
-  #   needs: acceptance
-
-
-      
