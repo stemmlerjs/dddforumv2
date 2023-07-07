@@ -39,7 +39,7 @@ jobs:
       - name: Build frontend
         run: cd frontend && npm run build:ci
 
-      - name: Test frontend (core unit tests)
-        run: cd frontend && npm run test:core
+      - name: Test frontend (component tests)
+        run: cd frontend && npm run test:component
 
       
