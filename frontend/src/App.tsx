@@ -8,13 +8,14 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
-    
-    <Router>
+    <div className='app'>
+      <Router>
       <Routes>
         <Route path="/" element={<FrontPageComponent/>} />
         <Route path="/register" element={<RegistrationPageComponent/>} />
       </Routes>
     </Router>
+    </div>
   );
 }
 

@@ -1,9 +1,11 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import App from './App';
+import {prettyDOM} from '@testing-library/dom'
 
-test('renders learn react link', () => {
+test('renders front page', async () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  let frontPageElement = await screen.getByText(/front page/i);
+  console.log(prettyDOM(frontPageElement))
+  expect(frontPageElement).toBeDefined();
 });
