@@ -28,7 +28,7 @@ jobs:
         id: backend-build
         uses: actions/upload-artifact@v2
         with:
-          name: backend-build-${{ github.run_number }}-${{ github.run_id }}
+          name: backend-build-${{ github.run_number }}
           path: ./backend/build
           # Customize Artifact Retention Period
           retention-days: 2
@@ -55,7 +55,7 @@ jobs:
         id: frontend-build
         uses: actions/upload-artifact@v2
         with:
-          name: frontend-build-${{ github.run_number }}-${{ github.run_id }}
+          name: frontend-build-${{ github.run_number }}
           path: ./frontend/build
           # Customize Artifact Retention Period
           retention-days: 2
@@ -71,18 +71,18 @@ jobs:
       - name: Download backend build artifact
         uses: actions/download-artifact@v2
         with:
-          name: backend-build
+          name: backend-build-${{ github.run_number }}
 
       - name: Download frontend build artifact
         uses: actions/download-artifact@v2
         with:
-          name: frontend-build
+          name: frontend-build-${{ github.run_number }}
 
       - name: Archive Frontend and Backend
         run: |
           mkdir dist
-          cp -R ${{ github.workspace }}/frontend-build ./dist/frontend
-          cp -R ${{ github.workspace }}/backend-build ./dist/backend
+          cp -R ${{ github.workspace }}/frontend-build-${{ github.run_number }} ./dist/frontend
+          cp -R ${{ github.workspace }}/backend-build-${{ github.run_number }} ./dist/backend
 
           cd dist
           zip -r package.zip .
