@@ -42,4 +42,46 @@ jobs:
       - name: Test frontend (component tests)
         run: cd frontend && npm run test:component
 
+  package:
+    needs: [build-and-test-front, build-and-test-back]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Archive Frontend and Backend
+        run: |
+          mkdir dist
+          cp -R ./frontend/build ./dist/frontend
+          cp -R ./backend/build ./dist/backend
+
+          cd dist
+          zip -r package.zip .
+          mv package.zip ../package.zip
+          rm -rf ../dist
+  release:
+    needs: package
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v1.0.0
+          release_name: Release v1.0.0
+
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./package.zip
+          asset_name: package.zip
+          asset_content_type: application/zip
+
       
