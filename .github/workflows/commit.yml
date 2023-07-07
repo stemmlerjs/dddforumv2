@@ -80,10 +80,20 @@ jobs:
           name: frontend-build-${{ github.run_number }}
           path: ./frontend-build
         
-      - name: Deploy to Staging Netlify
+      - name: Deploy to Frontend Staging on Netlify
         uses: netlify/actions/cli@master
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
         with:
           args: deploy --dir=frontend-build --alias=staging 
+
+      - name: Wait for Render Deployment
+        uses: bounceapp/render-action@0.6.0
+        with:
+          render-token: ${{ secrets.RENDER_API_KEY }}
+          service-id: srv-cijkadtph6euh7k6e49g
+          retries: 20
+          wait: 16000
+          sleep: 30000
+      
