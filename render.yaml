@@ -7,10 +7,10 @@ services:
     rootDir: backend
     buildCommand: npm run build:ci
     startCommand: npm run start:ci
-    buildFilter:
-      paths:
-      - src/**/*.ts
-      - test/**/*.ts
+    # buildFilter:
+    #   paths:
+    #   - src/**/*.ts
+    #   - test/**/*.ts
     # envVars:
     #   - key: REDIS_HOST
     #     fromService:
