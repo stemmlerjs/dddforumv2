@@ -1,5 +1,5 @@
 
-import { RegistrationFormProps } from "../components/registrationPage/registrationPageComponent";
+import { RegistrationFormProps } from "../registrationPageComponent";
 
 export class RegistrationForm {
   private props: RegistrationFormProps;

@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { RegistrationForm } from "../../models/registrationForm";
+import { RegistrationForm } from "./models/registrationForm";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+import { Layout } from "../../shared/components/layout";
 
 export interface RegistrationFormProps {
   email: string;
@@ -62,7 +63,8 @@ const RegistrationPageComponent = () => {
   }
 
   return (
-    <div>
+    <Layout title="Register">
+      <div>
       <ToastContainer
         position="top-right"
         autoClose={5000}
@@ -106,7 +108,8 @@ const RegistrationPageComponent = () => {
       >
         Submit
       </button>
-    </div>
+      </div>
+    </Layout>
   );
 };
 
