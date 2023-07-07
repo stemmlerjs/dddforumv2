@@ -89,14 +89,14 @@ jobs:
           mv package.zip ../package.zip
           rm -rf ../dist
           
-  staging:
-    needs: publish
+  # staging:
+  #   needs: publish
 
-  acceptance:
-    needs: staging
+  # acceptance:
+  #   needs: staging
 
-  deploy:
-    needs: acceptance
+  # deploy:
+  #   needs: acceptance
 
 
       
