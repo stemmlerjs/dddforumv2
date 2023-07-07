@@ -3,8 +3,13 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 export class UserService {
+
   async createUser(userData: any) {
     try {
+      // If already exists, return error
+      // If username taken, return error
+      // If invalid properties, return error
+      // Return success
       const user = await prisma.user.create({ data: userData });
       return user
     } catch (err) {
@@ -24,4 +29,5 @@ export class UserService {
     const user = await prisma.user.findUnique({ where: { email } });
     return user;
   }
+
 }
