@@ -60,7 +60,7 @@ jobs:
           # Customize Artifact Retention Period
           retention-days: 2
 
-  publish:
+  staging:
     needs: [build-and-test-front, build-and-test-back]
     runs-on: ubuntu-latest
 
@@ -72,19 +72,18 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: backend-build-${{ github.run_number }}
+          path: ./backend-build
 
       - name: Download frontend build artifact
         uses: actions/download-artifact@v2
         with:
           name: frontend-build-${{ github.run_number }}
-
-      - name: Archive Frontend and Backend
-        run: |
-          mkdir dist
-          cp -R ${{ github.workspace }}/frontend-build-${{ github.run_number }} ./dist/frontend
-          cp -R ${{ github.workspace }}/backend-build-${{ github.run_number }} ./dist/backend
-
-          cd dist
-          zip -r package.zip .
-          mv package.zip ../package.zip
-          rm -rf ../dist
+          path: ./frontend-build
+        
+      - name: Deploy to Staging Netlify
+        uses: netlify/actions/cli@master
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        with:
+          args: deploy --dir=frontend-build --alias=staging 
