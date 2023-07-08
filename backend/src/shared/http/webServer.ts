@@ -29,6 +29,7 @@ export class WebServer {
   }
 
   private setupRoutes(controller: UserController) {
+    this.express.get('/health', (req, res) => res.status(200).send({ ok: true }))
     // Get a user by email
     this.express.get("/users", (req, res) =>
       controller.getUserByEmailController(req, res)

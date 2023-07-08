@@ -34,7 +34,7 @@ export class RegistrationPage {
   }
 
   async isSuccessToastVisible (): Promise<boolean> {
-    let element = await this.driver.page.waitForSelector(`#success-toast`)
+    let element = await this.driver.page.waitForSelector(`#success-toast`, { timeout: 2000 })
     if (element) return true;
     return false;
   }

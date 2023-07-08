@@ -12,13 +12,15 @@ export type CreateUserInput = {
   username: string;
 }
 
-type CreateUserSuccess = Response<{
+export type UserDTO = {
   id: number;
   email: string;
   firstName: string;
   lastName: string;
   username: string;
-}, true, null>;
+}
+
+type CreateUserSuccess = Response<UserDTO, true, null>;
 
 type AccountAlreadyExists = Response<undefined, false, 'Failure'>;
 type UsernameTaken = Response<undefined, false, 'Failure'>;

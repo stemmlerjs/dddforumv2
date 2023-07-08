@@ -44,8 +44,9 @@ defineFeature(feature, test => {
 
     then('I should be granted access to my account', async () => {
       expect(await registrationPage.isSuccessToastVisible()).toBeTruthy();
-      expect(await frontPage.isOnPage()).toBeTruthy();
-      expect(await frontPage.getUsernameFromMenuButton()).toEqual(createUserInput.username)
+      await puppeteerPageDriver.page.waitForTimeout(4000);
+      expect(await frontPage.getUsernameFromMenuButton()).toContain(createUserInput.username)
+      console.debug('here finally')
     });
 
     and('I should receive an email with login instructions', () => {

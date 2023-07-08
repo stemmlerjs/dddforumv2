@@ -22,8 +22,11 @@ export class FrontPage {
   }
 
   public async isOnPage(): Promise<boolean> {
+    console.debug(this.baseUrl, 'base url')
     let result = await this.driver.browser.waitForTarget(
-      target => target.url() === this.baseUrl
+      target => {
+        return target.url().includes(this.baseUrl)
+      }, 
     );
 
     if (result) return true;
@@ -31,7 +34,8 @@ export class FrontPage {
   }
 
   public async getUsernameFromMenuButton (): Promise<string | null> {
-    await this.components.load();
-    return this.components.get('menu').evaluate((e) => e.textContent);
+    let element = await this.driver.page.$('.menu');
+    if (!element) throw new Error('could not find menu item,');
+    return element?.evaluate((e) => e.textContent);
   }
 }

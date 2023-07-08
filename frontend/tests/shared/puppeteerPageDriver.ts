@@ -4,7 +4,7 @@ export class PuppeteerPageDriver {
   constructor(public browser: Browser, public page: Page) {}
 
   public static async create(options?: PuppeteerLaunchOptions) {
-    let instance = await puppeteer.launch(options);
+    let instance = await puppeteer.launch();
     let page = await instance.newPage();
     return new PuppeteerPageDriver(instance, page);
   }
