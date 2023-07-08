@@ -1,4 +1,5 @@
 module.exports = {
+  "setupFilesAfterEnv": ["./tests/testsSetup.ts"],
   preset: "jest-puppeteer",
   transform: {
     '^.+\\.ts?$': 'ts-jest',

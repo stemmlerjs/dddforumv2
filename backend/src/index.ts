@@ -1,11 +1,10 @@
 
 import { UserController } from "./modules/users/userController";
-import { UserService } from "./modules/users/userService";
-import { WebServer } from "./shared/infra/http/webServer";
+import { WebServer } from "./shared/http/webServer";
+import { config } from './shared/config/appConfig.shared'
 
-let userService = new UserService();
-let userController = new UserController(userService)
+let userController = new UserController()
 
-new WebServer({ port: 3000 }, userController).start();
+new WebServer({ port: config.api.port }, userController).start();
 
 

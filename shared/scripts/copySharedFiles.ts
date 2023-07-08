@@ -22,7 +22,7 @@ console.log(destinationBase);
 console.log(`Project: ${project}`);
 
 // Define the folders to copy
-const foldersToCopy = ['users'];
+const foldersToCopy = ['users', 'config'];
 
 foldersToCopy.forEach((folder) => {
   const sourcePath = path.join(sourceDirectory, folder);

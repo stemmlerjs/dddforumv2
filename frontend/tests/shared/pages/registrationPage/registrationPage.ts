@@ -1,7 +1,8 @@
 
 import { PuppeteerPageDriver } from "../../puppeteerPageDriver";
 import { PageComponents } from "../../pageComponents";
-import { CreateUserInput } from "../../../../../shared/users/dtos/createUserInput";
+import { CreateUserInput } from "../../../../src/shared/users/dtos/usersDTOs.shared";
+import { config } from "../../../../src/shared/config";
 
 export class RegistrationPage {
   private baseUrl: string;
@@ -9,7 +10,7 @@ export class RegistrationPage {
 
   constructor (private driver: PuppeteerPageDriver) {
     this.driver = driver;
-    this.baseUrl = 'http://localhost:3001/register'
+    this.baseUrl = `${config.frontend.url as string}/register`
     this.components = new PageComponents({
       email: { selector: '.email.registration', type: 'input' },
       firstName: { selector: '.first-name.registration', type: 'input'},

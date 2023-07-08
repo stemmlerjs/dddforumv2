@@ -2,6 +2,7 @@
 
 import { PageComponents } from "../../pageComponents";
 import { PuppeteerPageDriver } from "../../puppeteerPageDriver";
+import { config } from '../../../../src/shared/config'
 
 export class FrontPage {
 
@@ -10,7 +11,7 @@ export class FrontPage {
 
   constructor (private driver: PuppeteerPageDriver) {
     this.driver = driver;
-    this.baseUrl = 'http://localhost:3001/'
+    this.baseUrl = config.frontend.url as string;
     this.components = new PageComponents({
       menu: { selector: '.menu', type: 'div' },
     }, driver);

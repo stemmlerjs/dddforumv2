@@ -4,8 +4,8 @@ import * as path from 'path'
 import { RegistrationPage } from '../../shared/pages/registrationPage/registrationPage';
 import { FrontPage } from '../../shared/pages/frontPage/frontPage';
 import { PuppeteerPageDriver } from '../../shared/puppeteerPageDriver';
-import { CreateUserInput } from '../../../../shared/users/dtos/createUserInput';
-import { UserBuilder } from '../../../../shared/users/builders/userBuilder';
+import { CreateUserInput } from '../../../src/shared/users/dtos/usersDTOs.shared';
+import { UserBuilder } from '../../../src/shared/users/builders/userBuilder.shared';
 
 const feature = loadFeature(path.join(__dirname, '../../../../shared/users/e2e/registration.feature'));
 
