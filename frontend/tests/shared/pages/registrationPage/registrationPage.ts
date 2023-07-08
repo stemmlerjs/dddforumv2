@@ -19,16 +19,12 @@ export class RegistrationPage {
     }, driver)
   }
 
-  loadComponents () {
-    this.components.load();
-  }
-
   async registerWithAccountDetails (input: CreateUserInput) {
     await this.components.load();
     await this.components.get('email').type(input.email)
     await this.components.get('firstName').type(input.firstName);
     await this.components.get('lastName').type(input.lastName);
-    await this.components.get('username').type(input.userName);
+    await this.components.get('username').type(input.username);
     await this.components.get('submissionButton').click();
   }
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layout } from '../../shared/components/layout';
+import { Layout } from '../../../shared/components/layout';
 
 const FrontPageComponent = () => {
   return (

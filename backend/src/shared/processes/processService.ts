@@ -9,12 +9,12 @@ export class ProcessService {
 
     exec(killCommand, (error: any, stdout: any, stderr: any) => {
       if (error) {
-        console.error(`Failed to execute the command: ${error.message}`);
+        // console.error(`Failed to execute the command: ${error.message}`);
         return cb ? cb() : "";
       }
 
       if (stderr) {
-        console.error(`Command execution returned an error: ${stderr}`);
+        // console.error(`Command execution returned an error: ${stderr}`);
         return cb ? cb() : "";
       }
 
@@ -27,14 +27,14 @@ export class ProcessService {
 
         exec(killProcessCommand, (error: any, stdout: any, stderr: any) => {
           if (error) {
-            console.error(`Failed to kill the process: ${error.message}`);
+            // console.error(`Failed to kill the process: ${error.message}`);
             return cb ? cb() : "";
           }
-          console.log(`Process running on port ${port} has been killed.`);
+          // console.log(`Process running on port ${port} has been killed.`);
           return cb ? cb() : "";
         });
       } else {
-        console.log(`No process found running on port ${port}.`);
+        // console.log(`No process found running on port ${port}.`);
         return cb ? cb() : "";
       }
     });

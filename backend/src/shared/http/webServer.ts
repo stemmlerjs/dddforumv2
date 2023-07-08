@@ -1,7 +1,7 @@
 import express from "express";
 import { Server } from "http";
-import { UserController } from "../../../modules/users/userController";
 import { ProcessService } from "../processes/processService";
+import { UserController } from "../../modules/users/userController";
 const cors = require("cors");
 
 type WebServerConfig = {

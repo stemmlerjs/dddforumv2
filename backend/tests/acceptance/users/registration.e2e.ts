@@ -1,12 +1,13 @@
+
 import { defineFeature, loadFeature } from "jest-cucumber";
 import * as path from "path";
-import { UserBuilder } from "../../../../shared/users/builders/userBuilder";
-import { CreateUserInput } from "../../../../shared/users/dtos/createUserInput";
-import { RESTfulAPIDriver } from "../../restfulAPIDriver";
-import { CompositionRoot } from "../../../src/shared/infra/composition/compositionRoot";
+import { UserBuilder } from "../../../../shared/users/builders/userBuilder.shared";
+import { RESTfulAPIDriver } from "../../../src/shared/http/restfulAPIDriver";
+import { CompositionRoot } from '../../../src/shared/composition/compositionRoot'
+import { CreateUserInput } from "../../../src/shared/users/dtos/usersDTOs.shared";
 
 const feature = loadFeature(
-  path.join(__dirname, "../../../../shared/users/e2e/registration.feature")
+  path.join(__dirname, "../../../src/shared/users/e2e/registration.feature")
 );
 
 defineFeature(feature, (test) => {
@@ -39,11 +40,13 @@ defineFeature(feature, (test) => {
     });
 
     then("I should be granted access to my account", async () => {
-      expect(response.body.id).toBeDefined();
-      expect(response.body.email).toEqual(createUserInput.email);
-      expect(response.body.firstName).toEqual(createUserInput.firstName);
-      expect(response.body.lastName).toEqual(createUserInput.lastName);
-      expect(response.body.username).toEqual(createUserInput.username);
+      expect(response.body.success).toBeTruthy();
+      expect(response.body.error).toBeFalsy();
+      expect(response.body.data.id).toBeDefined();
+      expect(response.body.data.email).toEqual(createUserInput.email);
+      expect(response.body.data.firstName).toEqual(createUserInput.firstName);
+      expect(response.body.data.lastName).toEqual(createUserInput.lastName);
+      expect(response.body.data.username).toEqual(createUserInput.username);
     });
 
     and("I should receive an email with login instructions", () => {

@@ -3,7 +3,8 @@ import axios from "axios";
 import { RegistrationForm } from "./models/registrationForm";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
-import { Layout } from "../../shared/components/layout";
+import { Layout } from "../../../shared/components/layout";
+import { useGlobalState } from "../../../shared/persistence/globalState";
 
 export interface RegistrationFormProps {
   email: string;
@@ -29,6 +30,8 @@ const RegistrationPageComponent = () => {
   }
 
   async function submitForm(registrationFormProps: RegistrationFormProps) {
+    let [users, setUsers] = useGlobalState('users');
+
     // Validate the form
     let registrationFormOrError = RegistrationForm.create(
       registrationFormProps
@@ -41,7 +44,7 @@ const RegistrationPageComponent = () => {
 
     // Make the request
     try {
-      await axios({
+      let response = await axios({
         method: "POST",
         url: "http://localhost:3000/users/new",
         data: registrationFormOrError.toCreateUserDTO(),
@@ -50,6 +53,13 @@ const RegistrationPageComponent = () => {
       toast.success("Created! Good stuff.", {
         toastId: "success-toast",
       });
+
+      // Save the data somewhere shared so it can be accessed later
+      let createUserResponse: = response.data;
+
+      setUsers({
+        me: 
+      })
 
       setTimeout(() => {
         navigate("/");

@@ -1,14 +1,19 @@
 
 
+import { PageComponents } from "../../pageComponents";
 import { PuppeteerPageDriver } from "../../puppeteerPageDriver";
 
 export class FrontPage {
 
   private baseUrl: string;
+  private components: PageComponents;
 
   constructor (private driver: PuppeteerPageDriver) {
     this.driver = driver;
     this.baseUrl = 'http://localhost:3001/'
+    this.components = new PageComponents({
+      menu: { selector: '.menu', type: 'div' },
+    }, driver);
   }
 
   async open () {
@@ -22,5 +27,10 @@ export class FrontPage {
 
     if (result) return true;
     return false;
+  }
+
+  public async getUsernameFromMenuButton (): Promise<string | null> {
+    await this.components.load();
+    return this.components.get('menu').evaluate((e) => e.textContent);
   }
 }

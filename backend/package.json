@@ -7,10 +7,12 @@
     "node": ">=16.16"
   },
   "scripts": {
-    "build": "rimraf ./build && npx tsc",
-    "build:ci": "npm ci && rimraf ./build && npx tsc",
+    "prepare": "ts-node ../shared/scripts/setupBaseInstallation.ts && npm run copy-shared",
+    "copy-shared": "npx ts-node ../shared/scripts/copySharedFiles.ts --project backend",
+    "build": "rimraf ./build && npm run copy-shared && npx tsc",
+    "build:ci": "npm ci && npm run build",
     "start:ci": "npm run migrate && node build/index.js",
-    "start:dev": "npx nodemon",
+    "start:dev": "npm run copy-shared && npx nodemon",
     "migrate": "npx prisma db push --schema src/shared/infra/persistence/prisma/schema.prisma",
     "lint": "eslint . --ext .ts",
     "prettier-format": "run-script-os",
@@ -21,12 +23,12 @@
     "prettier-watch:win32": "onchange \"src/**/*.ts\" -- prettier --write {{changed}}",
     "prettier-watch:darwin:linux": "onchange 'src/**/*.ts' -- prettier --write {{changed}}",
     "prettier-watch:default": "onchange 'src/**/*.ts' -- prettier --write {{changed}}",
-    "test:core": "jest",
-    "test:core:dev": "jest --watchAll",
-    "test:e2e": "jest -c jest.config.e2e.js",
-    "test:e2e:dev": "jest -c jest.config.e2e.js --watchAll",
-    "test:infra": "jest -c jest.config.infra.js",
-    "test:infra:dev": "jest -c jest.config.infra.js --watchAll"
+    "test:core": "npm run prepare && jest",
+    "test:core:dev": "npm run prepare && jest --watchAll",
+    "test:e2e": "npm run prepare && jest -c jest.config.e2e.js",
+    "test:e2e:dev": "npm run prepare && jest -c jest.config.e2e.js --watchAll",
+    "test:infra": "npm run prepare && jest -c jest.config.infra.js",
+    "test:infra:dev": "npm run prepare && jest -c jest.config.infra.js --watchAll"
   },
   "husky": {
     "hooks": {
@@ -49,8 +51,10 @@
     "eslint-plugin-jest": "^26.6.0",
     "eslint-plugin-prettier": "^4.2.1",
     "fkill": "^8.1.0",
+    "fs-extra": "^11.1.1",
     "husky": "^8.0.1",
     "jest": "^28.1.3",
+    "ncp": "^2.0.0",
     "nodemon": "^2.0.19",
     "onchange": "^7.1.0",
     "prettier": "^2.7.1",
