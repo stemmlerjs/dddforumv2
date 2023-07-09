@@ -3,7 +3,7 @@ import React from 'react';
 import { useState } from "react";
 import { RegistrationFormProps } from "../domainObjects/registrationForm";
 
-export const FormView = ({ onSubmit }: { onSubmit: (props: RegistrationFormProps) => void }) => {
+export const RegistrationFormView = ({ onSubmit }: { onSubmit: (props: RegistrationFormProps) => void }) => {
   const [formState, setFormState] = useState<RegistrationFormProps>({
     email: "",
     firstName: "",

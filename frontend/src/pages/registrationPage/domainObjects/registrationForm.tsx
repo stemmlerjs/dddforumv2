@@ -1,11 +1,19 @@
 
-
 export interface RegistrationFormProps {
   email: string;
   firstName: string;
   lastName: string;
   username: string;
 }
+
+/**
+ * @type Domain object
+ * @description Domain objects are the decision-makers. They decide whether you
+ * should continue with requests or not. They encapsulate validation logic and so on.
+ * Anytime you intend to perform a state-changing, command-like behaviour by sending
+ * a request to the backend, know that it must typically first pass through a domain object
+ * to determine if we should even continue with the request or not.
+ */
 
 export class RegistrationForm {
   private props: RegistrationFormProps;
