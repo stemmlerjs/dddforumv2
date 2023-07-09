@@ -13,8 +13,6 @@ The work we have to do here is broken into 4 key parts:
 3. | Deploying the Skeleton to a Minimal Deployment Pipeline (w/ GitHub Actions, Render & Netlify)
 4. | Development Environment Refinements (for greater Discoverability & Understanding)
 
-
-
 ## What's most important here?
 
 Assuming we want to test everything from this folder, you can test/explore the following.
@@ -77,10 +75,25 @@ Here's how you can test it out locally.
 
 ### 3. Deploying the Skeleton to a Minimal Deployment Pipeline (w/ GitHub Actions, Render & Netlify)
 
-This
+> Image incoming
 
+... description incoming
 
+### 4. Development Environment Refinements (for greater Discoverability & Understanding)
 
-### Other
+> Image incoming
 
-- **Run the Backend Integration Tests**: `(cd backend && npm run test:infra)`
+... description incoming
+
+## Other
+
+### Run the Backend Integration Tests
+
+We run a few tests on the backend as well to prove that we can:
+
+- Start and stop the web server
+- Connect to the database
+
+You can test these with:
+
+`(cd backend && npm run test:infra)`
