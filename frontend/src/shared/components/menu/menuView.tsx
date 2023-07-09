@@ -4,11 +4,11 @@ import { MenuPresenter } from './menuPresenter';
 import { MenuViewModel } from './menuViewModel';
 import { Link } from 'react-router-dom';
 
-interface MenuComponentProps {
+interface MenuViewProps {
   presenter: MenuPresenter;
 }
 
-export const MenuComponent = ({ presenter }: MenuComponentProps) => {
+export const MenuView = ({ presenter }: MenuViewProps) => {
   
   /**
    * The presenter itself is responsible for creating the view model

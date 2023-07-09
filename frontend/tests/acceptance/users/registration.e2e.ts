@@ -45,7 +45,6 @@ defineFeature(feature, test => {
       expect(await registrationPage.isSuccessToastVisible()).toBeTruthy();
       await puppeteerPageDriver.page.waitForTimeout(4000);
       expect(await frontPage.getUsernameFromMenuButton()).toContain(createUserInput.username)
-      console.debug('here finally')
     });
 
     and('I should receive an email with login instructions', () => {

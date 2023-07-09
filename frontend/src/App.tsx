@@ -1,31 +1,23 @@
+
+
 import React from "react";
 import "./App.css";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import FrontPageContainerComponent from "./pages/frontPage/frontPageComponent";
 import "react-toastify/dist/ReactToastify.css";
-import RegistrationPageComponent from "./pages/registrationPage/registrationPageComponent";
-
-import { menuPresenter } from "./shared/composition";
+import {
+  menuPresenter,
+  routingService,
+  registrationPageController
+} from "./shared/composition";
+import FrontPageContainerComponent from "./pages/frontPage/frontPage.container";
+import RegistrationPageContainer from "./pages/registrationPage/registrationPage.container";
 
 function App() {
   return (
     <div className="app">
-      <Router>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <FrontPageContainerComponent menuPresenter={menuPresenter} />
-            }
-          />
-          <Route
-            path="/register"
-            element={
-              <RegistrationPageComponent />
-            }
-          />
-        </Routes>
-      </Router>
+      {routingService.createRoutes([
+        { '/': <FrontPageContainerComponent menuPresenter={menuPresenter} /> },
+        { '/register': <RegistrationPageContainer controller={registrationPageController} />}
+      ])}
     </div>
   );
 }

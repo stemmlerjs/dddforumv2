@@ -1,5 +1,11 @@
 
-import { RegistrationFormProps } from "../registrationPageComponent";
+
+export interface RegistrationFormProps {
+  email: string;
+  firstName: string;
+  lastName: string;
+  username: string;
+}
 
 export class RegistrationForm {
   private props: RegistrationFormProps;
@@ -9,7 +15,6 @@ export class RegistrationForm {
   }
 
   public static create (props: RegistrationFormProps): RegistrationForm | Error {
-    
     // Validate basically
     if (!props.email.includes('@')) return new Error('Invalid email');
     if (props.firstName.length < 1 || props.firstName.length > 20) return new Error('Invalid firstName');

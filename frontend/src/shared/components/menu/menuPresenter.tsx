@@ -1,11 +1,6 @@
-import { map } from "rxjs";
-import { GlobalCache, UsersState } from "../persistence/globalState";
-import { MenuViewModel } from "./menuViewModel";
-import { UserRepository } from "./userRepo";
 
-/**
- * 
- */
+import { GlobalCache, UsersState } from "../../persistence/globalState";
+import { MenuViewModel } from "./menuViewModel";
 
 export class MenuPresenter {
 
