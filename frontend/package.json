@@ -22,7 +22,6 @@
     "test:component": "npm run prepare && jest -c jest.config.js",
     "test:dev": "npm run prepare && react-scripts test",
     "test:e2e:dev": "npm run prepare && jest -c jest.config.e2e.js --watch --verbose true",
-    "test:e2e:dev:fast": "jest -c jest.config.e2e.js --watch --verbose true",
     "test:e2e": "npm run prepare && jest -c jest.config.e2e.js",
     "eject": "react-scripts eject"
   },
