@@ -22,7 +22,6 @@ export class FrontPage {
   }
 
   public async isOnPage(): Promise<boolean> {
-    console.debug(this.baseUrl, 'base url')
     let result = await this.driver.browser.waitForTarget(
       target => {
         return target.url().includes(this.baseUrl)

@@ -14,7 +14,7 @@
     "build": "rimraf ./build && npm run copy-shared && npx tsc",
     "build:ci": "npm ci && npm run build",
     "start:ci": "npm run prepare && npm run migrate && node build/index.js",
-    "start:dev": "npm run prepare:dev && npx nodemon",
+    "start:dev": "docker-compose up --build -d && npm run prepare:dev && npx nodemon",
     "migrate": "npx prisma db push --schema src/shared/persistence/prisma/schema.prisma",
     "lint": "eslint . --ext .ts",
     "prettier-format": "run-script-os",
