@@ -21,7 +21,7 @@ function App() {
           <Route
             path="/register"
             element={
-              <RegistrationPageComponent menuPresenter={menuPresenter} />
+              <RegistrationPageComponent />
             }
           />
         </Routes>

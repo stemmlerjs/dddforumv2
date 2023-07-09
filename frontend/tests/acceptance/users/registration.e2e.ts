@@ -26,7 +26,6 @@ defineFeature(feature, test => {
       await puppeteerPageDriver.browser.close();
     })
 
-
     given('I am a new user', async () => {
       createUserInput = new UserBuilder()
         .withFirstName('Khalil')

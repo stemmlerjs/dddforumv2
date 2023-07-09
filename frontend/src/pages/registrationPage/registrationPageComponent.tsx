@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import { Layout } from "../../shared/components/layout";
 import { CreateUserResponse } from "../../shared/users/dtos/usersDTOs.shared";
-import { MenuPresenter } from "../../shared/components/menuPresenter";
 import { cache } from "../../shared/composition";
 
 export interface RegistrationFormProps {
@@ -16,7 +15,7 @@ export interface RegistrationFormProps {
   username: string;
 }
 
-const RegistrationPageComponent = ({ menuPresenter }: { menuPresenter: MenuPresenter }) => {
+const RegistrationPageComponent = () => {
   const navigate = useNavigate();
   const [formState, setFormState] = useState<RegistrationFormProps>({
     email: "",
@@ -69,6 +68,7 @@ const RegistrationPageComponent = ({ menuPresenter }: { menuPresenter: MenuPrese
         setTimeout(() => {
           navigate("/");
         }, 1500);
+
       } catch (err) {
         toast.error("Ahh, something went wrong", {
           toastId: "error-toast",
