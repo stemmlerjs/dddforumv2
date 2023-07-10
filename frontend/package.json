@@ -14,15 +14,15 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "prepare": "ts-node ../shared/scripts/setupBaseInstallation.ts && npm run copy-shared && npm run ensure-dev-api",
+    "prepare": "ts-node ../shared/scripts/setupBaseInstallation.ts && npm run copy-shared",
     "ensure-dev-api": "ts-node ../shared/scripts/checkAPIStartedForDev.ts",
     "copy-shared": "npx ts-node ../shared/scripts/copySharedFiles.ts --project frontend",
     "start": "cross-env BROWSER=none PORT=3001 react-scripts start",
     "build:ci": "npm run prepare && npm install && react-scripts build",
     "test:component": "npm run prepare && jest -c jest.config.js",
     "test:dev": "npm run prepare && react-scripts test",
-    "test:e2e:dev": "npm run prepare && jest -c jest.config.e2e.js --watch --verbose true",
-    "test:e2e": "npm run prepare && jest -c jest.config.e2e.js",
+    "test:e2e:dev": "npm run prepare && npm run ensure-dev-api && jest -c jest.config.e2e.js --watch --verbose true",
+    "test:e2e": "npm run prepare && npm run ensure-dev-api && jest -c jest.config.e2e.js",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
