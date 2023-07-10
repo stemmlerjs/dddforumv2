@@ -21,7 +21,7 @@ Assuming we want to test everything from this folder, you can test/explore the f
 
 Ensure you've [installed Docker](https://www.docker.com/products/docker-desktop/) on your machine and have it started.
 
-This will allow us to run local services that we need (such as Postgres) without having to do messy setup.
+This will allow us to run the local services we need (such as Postgres) without messy setup.
 
 This keeps our development environments simple and reproducible.
 
@@ -37,19 +37,19 @@ Automated tests are _superior_. Here's how we can do it on the backend.
 (cd backend && docker-compose up --build -d)
 ```
 
-> **Note**: Using parethesis allows you to run all of the commands from this top level folder and stay at this top level folder.
+> **Note**: Using parenthesis allows you to run all of the commands from this top-level folder and _stay_ at this top-level folder.
 
 **Step 2: Run the E2E tests**
 
-With the services built, now you can run the E2E tests.
+With the services built, you can now run the E2E tests.
 
 ```bash
-(cd backend && npm install && npm run test:e2e)
+(cd backend && npm ci && npm run test:e2e)
 ```
 
 ### 2. Test a Walking Skeleton (E2e UI to Backend Test Infrastructure)
 
-A walking skeleton is a minimal slice of functionality through all of your major architectural components, from the perspective of the user.
+A walking skeleton is a minimal slice of functionality through all of your major architectural components from the user's perspective.
 
 ![](https://private-user-images.githubusercontent.com/6892666/252123183-84b45357-f051-4bf7-a0c5-0fe1367bb731.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXkiOiJrZXkxIiwiZXhwIjoxNjg4ODcxMzI5LCJuYmYiOjE2ODg4NzEwMjksInBhdGgiOiIvNjg5MjY2Ni8yNTIxMjMxODMtODRiNDUzNTctZjA1MS00YmY3LWEwYzUtMGZlMTM2N2JiNzMxLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFJV05KWUFYNENTVkVINTNBJTJGMjAyMzA3MDklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjMwNzA5VDAyNTAyOVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWQ1N2ViMTQxMGUyODJkNDQ0YTg4ZmY3NTc2Y2UzZWQxNTg3MDNkZGU0ZjE5MTM4YzI0ZjkzZjNkMzdhN2UzZDAmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.b3E_gRfDbiKIa4YvgPWmyPCv3V62Cq4KT0Mqeltu7Xo)
 
