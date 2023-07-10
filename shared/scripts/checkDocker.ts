@@ -1,17 +1,7 @@
-const { execSync } = require('child_process');
-
-// Function to check if a command exists
-const commandExists = (command: any) => {
-  try {
-    execSync(`command -v ${command} 2>/dev/null`);
-    return true;
-  } catch (error) {
-    return false;
-  }
-};
+import {sync as commandExistsSync} from 'command-exists'
 
 // Check if Docker is installed
-if (!commandExists('docker')) {
+if (!commandExistsSync('docker')) {
   console.error('Docker is not installed.');
   console.error('Please install Docker by following the official Docker installation instructions:');
   console.error('https://docs.docker.com/get-docker/');
@@ -19,7 +9,7 @@ if (!commandExists('docker')) {
 }
 
 // Check if Docker Compose is installed
-if (!commandExists('docker-compose')) {
+if (!commandExistsSync('docker-compose')) {
   console.error('Docker Compose is not installed.');
   console.error('Please install Docker Compose by following the official Docker Compose installation instructions:');
   console.error('https://docs.docker.com/compose/install/');
