@@ -5,6 +5,6 @@ export class RESTfulAPIDriver {
   constructor(private http: Server) {}
 
   post(url: string, data: any) {
-    return request(this.http).post(url).send(data).set('Accept', 'application/json');
+    return request(this.http).post(url).set('Accept', 'application/json').send(data);
   }
 }

@@ -9,6 +9,7 @@ const execParams = {
 } as const;
 
 checkDocker();
+
 execSync('docker-compose up --build -d', execParams);
-execSync('prisma generate', execParams);
-execSync('npm run migrate', execParams);
+execSync('prisma generate --schema src/shared/persistence/prisma/schema.prisma', execParams);
+execSync('dotenv -e .env.development -- npm run migrate', execParams);

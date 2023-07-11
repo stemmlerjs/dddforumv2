@@ -21,6 +21,7 @@ export class UserController {
       };
       res.status(201).json(returnDTO);
     } catch (error) {
+      console.error(error);
       res.status(500).json({ error: 'Failed to create user.' });
     }
   }
@@ -33,6 +34,7 @@ export class UserController {
       });
       res.json(user);
     } catch (error) {
+      console.error(error);
       res.status(500).json({ error: 'Failed to edit user.' });
     }
   }
@@ -43,6 +45,7 @@ export class UserController {
       const user = await prisma.user.findUnique({ where: { email } });
       res.json(user);
     } catch (error) {
+      console.error(error);
       res.status(500).json({ error: 'Failed to fetch user.' });
     }
   }

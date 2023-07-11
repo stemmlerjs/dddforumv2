@@ -8,7 +8,7 @@
     "clean": "rimraf ./dist",
     "build": "npm run clean && tsc -b tsconfig.build.json",
     "migrate": "prisma db push --schema src/shared/persistence/prisma/schema.prisma",
-    "start:ci": "npm run build && npm run migrate && node build/index.js",
+    "start:ci": "dotenv -e .env.staging -- npm run migrate && dotenv -e .env.staging -- node dist/index.js",
     "start:dev": "ts-node -r tsconfig-paths/register prepareDev.ts && nodemon"
   },
   "dependencies": {

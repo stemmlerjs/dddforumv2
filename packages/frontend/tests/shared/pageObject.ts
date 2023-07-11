@@ -8,7 +8,7 @@ export abstract class PageObject {
   constructor(protected driver: PuppeteerPageDriver, protected baseUrl: string) {}
 
   public open() {
-    console.log('!!!!!1', this.baseUrl);
+    console.log('Open URL', this.baseUrl);
     this.driver.page.goto(this.baseUrl);
   }
 

@@ -39,7 +39,7 @@ export class RegistrationPage {
   }
 
   async open() {
-    console.log('!!!!!3', this.baseUrl);
+    console.log('Open registration page URL', this.baseUrl);
     await this.driver.page.goto(this.baseUrl);
   }
 

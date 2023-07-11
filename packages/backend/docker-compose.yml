@@ -4,6 +4,6 @@ services:
     image: postgres
     restart: always
     env_file:
-      - .env
+      - .env.development
     ports:
       - 5440:5432

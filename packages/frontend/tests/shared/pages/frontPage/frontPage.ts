@@ -19,7 +19,7 @@ export class FrontPage {
   }
 
   async open() {
-    console.log('!!!!!2', this.baseUrl);
+    console.log('Open front page URL', this.baseUrl);
     await this.driver.page.goto(this.baseUrl);
   }
 
