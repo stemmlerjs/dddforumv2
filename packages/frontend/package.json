@@ -1,0 +1,42 @@
+{
+  "name": "@dddforum/frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "clean": "rimraf ./dist",
+    "build": "npm run clean && react-scripts build",
+    "start:dev": "cross-env BROWSER=none PORT=3001 BUILD_PATH='./dist' react-scripts start"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "dependencies": {
+    "@dddforum/shared": "^0.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.14.1",
+    "react-toastify": "^9.1.3",
+    "web-vitals": "^2.1.4"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^14.0.0",
+    "@types/axios": "^0.14.0",
+    "@types/react": "^18.2.14",
+    "@types/react-dom": "^18.2.6",
+    "axios": "^1.4.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest-environment-jsdom": "^29.6.1",
+    "puppeteer": "^20.8.0",
+    "react-scripts": "5.0.1"
+  }
+}
