@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 
+import { UserRepository } from '../../modules/users/repos/userRepo';
 import { NotificationService } from '../../shared/notifications/notificationService';
 import { UsersState } from '../../shared/persistence/globalState';
-import { UserRepository } from '../../shared/users/repos/userRepo';
 import { RegistrationForm, RegistrationFormProps } from './domainObjects/registrationForm';
 
 export class RegistrationPageController {

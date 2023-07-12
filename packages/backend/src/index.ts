@@ -1,4 +1,4 @@
-import { config } from '@dddforum/shared/dist/config/appConfig.shared';
+import { config } from '@dddforum/shared/src/config/appConfig.shared';
 
 import { UserController } from './modules/users/userController';
 import { WebServer } from './shared/http/webServer';

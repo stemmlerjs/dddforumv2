@@ -1,4 +1,4 @@
-import { UserDTO } from '../users/dtos/usersDTOs.shared';
+import { UserDTO } from '@dddforum/shared/src/users/dtos/usersDTOs.shared';
 
 export interface UsersState {
   me?: UserDTO;

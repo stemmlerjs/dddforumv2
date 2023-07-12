@@ -1,12 +1,12 @@
-import { CompositionRoot } from '@dddforum/backend/dist/shared/composition/compositionRoot';
-import { RESTfulAPIDriver } from '@dddforum/backend/dist/shared/http/restfulAPIDriver';
-import { sharedRoot } from '@dddforum/shared/dist/paths';
-import { UserBuilder } from '@dddforum/shared/dist/users/builders/userBuilder.shared';
-import { CreateUserInput } from '@dddforum/shared/dist/users/dtos/usersDTOs.shared';
+import { CompositionRoot } from '@dddforum/backend/src/shared/composition/compositionRoot';
+import { RESTfulAPIDriver } from '@dddforum/backend/src/shared/http/restfulAPIDriver';
+import { UserBuilder } from '@dddforum/shared/tests/users/builders/userBuilder.shared';
+import { CreateUserInput } from '@dddforum/shared/src/users/dtos/usersDTOs.shared';
 import { defineFeature, loadFeature } from 'jest-cucumber';
 import * as path from 'path';
+import { sharedTestRoot } from '@dddforum/shared/src/paths';
 
-const feature = loadFeature(path.join(sharedRoot, 'users/e2e/registration.feature'));
+const feature = loadFeature(path.join(sharedTestRoot, 'users/e2e/registration.feature'));
 
 defineFeature(feature, (test) => {
   test('Successful registration', ({ given, when, then, and }) => {

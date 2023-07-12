@@ -1,8 +1,8 @@
+import { CreateUserResponse } from '@dddforum/shared/src/users/dtos/usersDTOs.shared';
 import axios from 'axios';
 
 import { RegistrationForm } from '../../../pages/registrationPage/domainObjects/registrationForm';
-import { GlobalCache, UsersState } from '../../persistence/globalState';
-import { CreateUserResponse } from '../dtos/usersDTOs.shared';
+import { GlobalCache, UsersState } from '../../../shared/persistence/globalState';
 
 export class UserRepository {
   constructor(private cache: GlobalCache) {}

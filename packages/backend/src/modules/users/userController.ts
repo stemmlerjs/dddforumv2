@@ -1,4 +1,4 @@
-import { CreateUserResponse } from '@dddforum/shared/dist/users/dtos/usersDTOs.shared';
+import { CreateUserResponse } from '@dddforum/shared/src/users/dtos/usersDTOs.shared';
 import { PrismaClient } from '@prisma/client';
 import { Request, Response } from 'express';
 

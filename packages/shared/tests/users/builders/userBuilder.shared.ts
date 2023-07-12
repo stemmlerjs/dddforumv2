@@ -1,4 +1,4 @@
-import { CreateUserInput } from '../dtos/usersDTOs.shared';
+import { CreateUserInput } from "@dddforum/shared/src/users/dtos/usersDTOs.shared";
 
 function generateRandomInteger(min: number, max: number) {
   return Math.floor(min + Math.random() * (max - min + 1));

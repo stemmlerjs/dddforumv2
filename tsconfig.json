@@ -9,9 +9,9 @@
     "types": [],
     "resolveJsonModule": true,
     "paths": {
-      "@dddforum/backend/dist/*": ["./packages/backend/src/*"],
-      "@dddforum/frontend/dist/*": ["./packages/frontend/src/*"],
-      "@dddforum/shared/dist/*": ["./packages/shared/src/*"]
+      "@dddforum/backend/*": ["./packages/backend/*"],
+      "@dddforum/frontend/*": ["./packages/frontend/*"],
+      "@dddforum/shared/*": ["./packages/shared/*"]
     }
   }
 }

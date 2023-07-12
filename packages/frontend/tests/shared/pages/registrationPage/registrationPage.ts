@@ -1,5 +1,5 @@
-import { config } from '@dddforum/shared/dist/config/appConfig.shared';
-import { CreateUserInput } from '@dddforum/shared/dist/users/dtos/usersDTOs.shared';
+import { config } from '@dddforum/shared/src/config/appConfig.shared';
+import { CreateUserInput } from '@dddforum/shared/src/users/dtos/usersDTOs.shared';
 
 import { PageComponents } from '../../pageComponents';
 import { PuppeteerPageDriver } from '../../puppeteerPageDriver';

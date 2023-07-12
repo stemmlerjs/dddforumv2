@@ -1,4 +1,4 @@
-import { config } from '@dddforum/shared/dist/config/appConfig.shared';
+import { config } from '@dddforum/shared/src/config/appConfig.shared';
 
 import { PageComponents } from '../../pageComponents';
 import { PuppeteerPageDriver } from '../../puppeteerPageDriver';

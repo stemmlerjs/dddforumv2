@@ -13,7 +13,7 @@ export class RoutingService {
         <Router>
           <Routes>
             {routeConfigList.map((config) => (
-              <Route path={getPath(config)} element={getElement(config)} />
+              <Route key={getPath(config)} path={getPath(config)} element={getElement(config)} />
             ))}
           </Routes>
         </Router>

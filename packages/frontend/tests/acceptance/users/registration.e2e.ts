@@ -1,6 +1,6 @@
-import { sharedRoot } from '@dddforum/shared/dist/paths';
-import { UserBuilder } from '@dddforum/shared/dist/users/builders/userBuilder.shared';
-import { CreateUserInput } from '@dddforum/shared/dist/users/dtos/usersDTOs.shared';
+import { sharedTestRoot } from '@dddforum/shared/src/paths';
+import { UserBuilder } from '@dddforum/shared/tests/users/builders/userBuilder.shared';
+import { CreateUserInput } from '@dddforum/shared/src/users/dtos/usersDTOs.shared';
 import { defineFeature, loadFeature } from 'jest-cucumber';
 import * as path from 'path';
 
@@ -8,7 +8,7 @@ import { FrontPage } from '../../shared/pages/frontPage/frontPage';
 import { RegistrationPage } from '../../shared/pages/registrationPage/registrationPage';
 import { PuppeteerPageDriver } from '../../shared/puppeteerPageDriver';
 
-const feature = loadFeature(path.join(sharedRoot, 'users/e2e/registration.feature'));
+const feature = loadFeature(path.join(sharedTestRoot, 'users/e2e/registration.feature'));
 
 defineFeature(feature, (test) => {
   test('Successful registration', ({ given, when, then, and }) => {

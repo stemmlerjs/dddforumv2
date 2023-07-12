@@ -1,4 +1,4 @@
-import { checkDocker } from '@dddforum/shared/dist/scripts/checkDocker';
+import { checkDocker } from '@dddforum/shared/src/scripts/checkDocker';
 import { execSync } from 'child_process';
 import path from 'path';
 

@@ -1,1 +1,4 @@
-export const sharedRoot = __dirname;
+import path from "path";
+
+export const sharedSrcRoot = __dirname;
+export const sharedTestRoot = path.join(__dirname, '../tests');
