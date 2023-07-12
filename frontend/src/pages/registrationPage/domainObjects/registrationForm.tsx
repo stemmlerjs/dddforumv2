@@ -1,4 +1,6 @@
 
+import { CreateUserInput } from "../../../shared/users/dtos/usersDTOs.shared";
+
 export interface RegistrationFormProps {
   email: string;
   firstName: string;
@@ -32,7 +34,7 @@ export class RegistrationForm {
     return new RegistrationForm(props);
   }
 
-  public toCreateUserDTO () {
+  public toCreateUserDTO () : CreateUserInput {
     return {
       username: this.props.username,
       firstName: this.props.firstName,
