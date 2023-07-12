@@ -1,3 +1,5 @@
 import { prepareDev } from './prepareDev';
 
-prepareDev();
+const env = process.argv[2]?.trim() || '.env.development';
+
+prepareDev(env);
