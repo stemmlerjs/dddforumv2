@@ -13,5 +13,6 @@ export default async (): Promise<JestConfigWithTsJest> => ({
   moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
     prefix: path.resolve(__dirname, '../../'),
   }),
-  setupFiles: ['./tests/testsSetup.ts'],
+  globalSetup: './tests/globalTestEnvTestsSetup.ts',
+  setupFilesAfterEnv: ['./tests/testsSetupAfterEnv.ts'],
 });
