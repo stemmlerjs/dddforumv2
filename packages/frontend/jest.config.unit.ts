@@ -17,5 +17,5 @@ export default async (): Promise<JestConfigWithTsJest> => ({
     '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
   },
   testEnvironment: 'jest-environment-jsdom',
-  setupFiles: ['./tests/testsSetup.ts'],
+  setupFilesAfterEnv: ['./tests/testsSetupAfterEnv.ts'],
 });
