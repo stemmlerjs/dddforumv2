@@ -1,4 +1,4 @@
-import { CreateUserInput } from '@dddforum/shared/dist/users/dtos/usersDTOs.shared';
+import { CreateUserInput } from '@dddforum/shared/src/users/dtos/usersDTOs.shared';
 
 export interface RegistrationFormProps {
   email: string;
