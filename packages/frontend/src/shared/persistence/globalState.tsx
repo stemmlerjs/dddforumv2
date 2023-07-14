@@ -11,7 +11,7 @@ type GlobalState = {
 type KeyInCache = 'users';
 
 export class GlobalCache {
-  private subscribers: any;
+  private subscribers: { users: { [key: string] : Function }};
   private data: GlobalState;
 
   constructor() {
@@ -39,6 +39,7 @@ export class GlobalCache {
     return this.data[key];
   }
 
+  // eslint-disable-next-line @typescript-eslint/ban-types
   set(key: KeyInCache, data: any) {
     this.data[key] = data;
     this.notify(key);

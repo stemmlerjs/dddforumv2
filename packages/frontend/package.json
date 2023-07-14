@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "clean": "rimraf ./dist",
-    "build": "CI=true npm run clean && cross-env BUILD_PATH='./dist' react-scripts build",
+    "build": "npm run clean && cross-env BUILD_PATH='./dist' react-scripts build",
     "start:dev": "eslint ./src --fix && cross-env BROWSER=none PORT=3001 BUILD_PATH='./dist' react-scripts start"
   },
   "browserslist": {
@@ -34,7 +34,6 @@
     "@types/axios": "^0.14.0",
     "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.6",
-    "cross-env": "^7.0.3",
     "identity-obj-proxy": "^3.0.0",
     "jest-environment-jsdom": "^29.6.1",
     "puppeteer": "^20.8.0",
