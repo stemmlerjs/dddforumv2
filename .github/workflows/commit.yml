@@ -33,7 +33,7 @@ jobs:
       - name: Lint
         run: npm run lint
 
-      - name: Create frontend build artifact
+      - name: Archive Frontend
         id: frontend-build
         uses: actions/upload-artifact@v2
         with:
@@ -44,7 +44,7 @@ jobs:
 
   trigger-staging:
     runs-on: ubuntu-latest
-    needs: [build-test-lint]
+    needs: [build-test-lint-archive]
 
     steps:
       - name: Trigger staging workflow
