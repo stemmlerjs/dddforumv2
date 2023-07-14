@@ -8,7 +8,9 @@ type GlobalState = {
   users: UsersState;
 };
 
-type Callback = (data: any) => void;
+type State = GlobalState[keyof GlobalState];
+
+type Callback = (data: State) => void;
 
 type KeyInCache = 'users';
 
@@ -42,7 +44,7 @@ export class GlobalCache {
   }
 
   // eslint-disable-next-line @typescript-eslint/ban-types
-  set(key: KeyInCache, data: any) {
+  set(key: KeyInCache, data: State) {
     this.data[key] = data;
     this.notify(key);
   }
