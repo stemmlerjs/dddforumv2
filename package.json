@@ -13,11 +13,11 @@
     "npm": ">=7.0.0"
   },
   "scripts": {
-    "setup": "echo 'Installing Globals' && npm install -g typescript @types/node rimraf cross-env",
+    "setup": "echo 'Installing Globals' && npm install -g typescript @types/node rimraf cross-env && echo 'Installing' && npm install",
     "clean": "npm run clean --workspaces --if-present",
-    "build": "npm run setup && npm run build --workspaces --if-present",
-    "build:ci:backend": "npm run setup && npm run build --workspace @dddforum/shared && npm run build --workspace @dddforum/backend",
-    "build:ci:frontend": "npm run setup && npm run build --workspace @dddforum/shared && npm run build --workspace @dddforum/frontend",
+    "build": "npm run build --workspaces --if-present",
+    "build:ci:backend": "npm run build --workspace @dddforum/shared && npm run build --workspace @dddforum/backend",
+    "build:ci:frontend": "npm run build --workspace @dddforum/shared && npm run build --workspace @dddforum/frontend",
     "start:ci:backend": "npm run start:ci --workspace @dddforum/backend",
     "start:dev:backend": "npm run start:dev --workspace @dddforum/backend",
     "start:dev:frontend": "npm run start:dev --workspace @dddforum/frontend",
