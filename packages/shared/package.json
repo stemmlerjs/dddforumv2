@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "clean": "rimraf ./dist",
+    "clean": "npx rimraf ./dist",
     "build": "npm run clean && tsc -b tsconfig.build.json"
   },
   "devDependencies": {
