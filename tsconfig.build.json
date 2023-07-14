@@ -6,7 +6,8 @@
     "lib": ["es6"],
     "strict": true,
     "esModuleInterop": true,
-    "types": [],
+    "types": ["node"],
+    "typeRoots": ["node_modules/@types"],
     "resolveJsonModule": true,
     "declaration": true
   },
