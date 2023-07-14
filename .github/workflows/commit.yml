@@ -27,23 +27,8 @@ jobs:
       - name: Test (core unit tests)
         run: npm run test:unit
 
-      - name: Create backend build artifact
-        id: backend-build
-        uses: actions/upload-artifact@v2
-        with:
-          name: backend-build-${{ github.run_number }}
-          path: ./backend/dist
-          # Customize Artifact Retention Period
-          retention-days: 2
-      
-      - name: Create frontend build artifact
-        id: frontend-build
-        uses: actions/upload-artifact@v2
-        with:
-          name: frontend-build-${{ github.run_number }}
-          path: ./frontend/dist
-          # Customize Artifact Retention Period
-          retention-days: 2
+      - name: Lint
+        run: npm run lint
 
   staging:
     needs: [build-and-test]
