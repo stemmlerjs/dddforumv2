@@ -6,7 +6,7 @@ on:
       - main # or specify your desired branch
 
 jobs:
-  build-and-test-back:
+  build-and-test:
     runs-on: ubuntu-latest
 
     steps:
@@ -18,50 +18,32 @@ jobs:
         with:
           node-version: 16.16
 
-      - name: Build backend
-        run: cd backend && npm run build:ci
+      - name: Build
+        run: npm run build
 
-      - name: Test backend (core unit tests)
-        run: cd backend && npm run test:core
+      - name: Test (core unit tests)
+        run: npm run test:unit
 
       - name: Create backend build artifact
         id: backend-build
         uses: actions/upload-artifact@v2
         with:
           name: backend-build-${{ github.run_number }}
-          path: ./backend/build
+          path: ./backend/dist
           # Customize Artifact Retention Period
           retention-days: 2
-
-  build-and-test-front:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: 16.16
-
-      - name: Build frontend
-        run: cd frontend && npm run build:ci
-
-      - name: Test frontend (component tests)
-        run: cd frontend && npm run test:component
-
+      
       - name: Create frontend build artifact
         id: frontend-build
         uses: actions/upload-artifact@v2
         with:
           name: frontend-build-${{ github.run_number }}
-          path: ./frontend/build
+          path: ./frontend/dist
           # Customize Artifact Retention Period
           retention-days: 2
 
   staging:
-    needs: [build-and-test-front, build-and-test-back]
+    needs: [build-and-test]
     runs-on: ubuntu-latest
 
     steps:

@@ -1,0 +1,13 @@
+{
+  "name": "@dddforum/shared",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "clean": "rimraf ./dist",
+    "build": "npm run clean && tsc -b tsconfig.build.json"
+  },
+  "devDependencies": {
+    "@types/command-exists": "^1.2.0",
+    "command-exists": "^1.2.9"
+  }
+}
