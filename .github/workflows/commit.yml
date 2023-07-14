@@ -33,45 +33,27 @@ jobs:
       - name: Lint
         run: npm run lint
 
-  staging:
-    needs: [build-test-lint]
+      - name: Create frontend build artifact
+        id: frontend-build
+        uses: actions/upload-artifact@v2
+        with:
+          name: frontend-build-${{ github.run_number }}
+          path: ./packages/frontend/dist
+          # Customize Artifact Retention Period
+          retention-days: 2
+
+  trigger-staging:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Download backend build artifact
-        uses: actions/download-artifact@v2
+      - name: Trigger staging workflow
+        uses: actions/github-script@v4
         with:
-          name: backend-build-${{ github.run_number }}
-          path: ./backend-build
-
-      - name: Download frontend build artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: frontend-build-${{ github.run_number }}
-          path: ./frontend-build
-        
-      - name: Deploy to Frontend Staging on Netlify
-        uses: netlify/actions/cli@master
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-        with:
-          args: deploy --dir=frontend-build --alias=staging 
-
-      - name: Wait for Render Deployment
-        uses: bounceapp/render-action@0.6.0
-        with:
-          render-token: ${{ secrets.RENDER_API_KEY }}
           github-token: ${{ secrets.REPO_TOKEN }}
-          service-id: srv-cijkadtph6euh7k6e49g
-          retries: 20
-          wait: 16000
-          sleep: 30000
-  
-  # infra_test:
-  # acceptance:
-  # deploy to production: 
-
+          script: |
+            const response = await github.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              workflow_file: 'staging.yml'
+            });
+            console.log(response);
