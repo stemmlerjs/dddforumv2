@@ -18,8 +18,8 @@ jobs:
         with:
           node-version: 16.16
 
-      - name: Setup
-        run: npm run setup
+      - name: Install
+        run: npm ci
 
       - name: Build
         run: npm run build
