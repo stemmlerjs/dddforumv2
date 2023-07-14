@@ -7,6 +7,7 @@
     "build": "npm run clean && tsc -b tsconfig.build.json"
   },
   "devDependencies": {
+    "rimraf": "^3.0.2",
     "@types/command-exists": "^1.2.0",
     "command-exists": "^1.2.9"
   }

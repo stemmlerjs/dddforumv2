@@ -19,6 +19,7 @@
     "prisma": "^4.16.0"
   },
   "devDependencies": {
+    "rimraf": "^3.0.2",
     "nodemon": "^2.0.19",
     "supertest": "^6.3.3",
     "ts-alias": "^0.0.7"
