@@ -17,9 +17,6 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 16.16
-          
-      - name: Set environment variables
-        run: echo "NODE_ENV=production" >> $GITHUB_ENV
 
       - name: Install
         run: npm ci
