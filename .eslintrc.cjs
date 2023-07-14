@@ -6,5 +6,6 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': ['error', { varsIgnorePattern: '^_', argsIgnorePattern: '^_' }],
     'simple-import-sort/imports': 'error',
     'simple-import-sort/exports': 'error',
+    "@typescript-eslint/no-explicit-any": "warn",
   },
 };
