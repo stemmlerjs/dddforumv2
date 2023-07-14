@@ -13,6 +13,7 @@
     "npm": ">=7.0.0"
   },
   "scripts": {
+    "setup": "npm run setup --workspaces",
     "clean": "npm run clean --workspaces --if-present",
     "build": "npm run build --workspaces --if-present",
     "build:ci:backend": "npm run build --workspace @dddforum/shared && npm run build --workspace @dddforum/backend",

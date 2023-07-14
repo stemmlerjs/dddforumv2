@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "setup": "npm ci",
     "clean": "rimraf ./dist",
     "build": "npm run clean && tsc -b tsconfig.build.json"
   },

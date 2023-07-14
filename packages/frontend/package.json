@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "setup": "npm ci",
     "clean": "rimraf ./dist",
     "build": "npm run clean && cross-env BUILD_PATH='./dist' react-scripts build",
     "start:dev": "eslint ./src --fix && cross-env BROWSER=none PORT=3001 BUILD_PATH='./dist' react-scripts start"

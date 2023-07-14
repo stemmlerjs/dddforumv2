@@ -5,6 +5,7 @@
   "license": "ISC",
   "main": "build/index.js",
   "scripts": {
+    "setup": "npm ci",
     "clean": "rimraf ./dist",
     "build": "npm run clean && tsc -b tsconfig.build.json && tsc-alias -p tsconfig.build.json -r ../../tsAliasesReplacer.js",
     "migrate": "prisma db push --schema src/shared/persistence/prisma/schema.prisma",
