@@ -8,10 +8,12 @@ type GlobalState = {
   users: UsersState;
 };
 
+type Callback = (data: any) => void;
+
 type KeyInCache = 'users';
 
 export class GlobalCache {
-  private subscribers: { users: { [key: string] : Function }};
+  private subscribers: { users: { [key: string]: Callback | undefined } };
   private data: GlobalState;
 
   constructor() {
@@ -25,7 +27,7 @@ export class GlobalCache {
     key: KeyInCache,
     subscriberName: string,
     // eslint-disable-next-line @typescript-eslint/ban-types
-    cb: Function,
+    cb: Callback,
   ) {
     const alreadySubscribed = this.subscribers[key] && this.subscribers[key][subscriberName];
     if (alreadySubscribed) {
@@ -50,7 +52,7 @@ export class GlobalCache {
     const subscriberKeys = Object.keys(this.subscribers[key]);
     for (const subKey of subscriberKeys) {
       const subscriberCallback = this.subscribers[key][subKey];
-      subscriberCallback(newState);
+      subscriberCallback ? subscriberCallback(newState) : '';
     }
   }
 }
