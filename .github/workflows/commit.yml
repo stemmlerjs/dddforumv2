@@ -44,6 +44,7 @@ jobs:
 
   trigger-staging:
     runs-on: ubuntu-latest
+    needs: [build-test-lint]
 
     steps:
       - name: Trigger staging workflow
