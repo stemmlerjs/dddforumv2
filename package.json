@@ -5,6 +5,7 @@
   "license": "ISC",
   "workspaces": [
     "packages/shared",
+    "packages/buildTools",
     "packages/backend",
     "packages/frontend"
   ],
@@ -15,6 +16,7 @@
   "scripts": {
     "clean": "npm run clean --workspaces --if-present",
     "build": "npm run build --workspaces --if-present",
+    "build:backend": "npm run build --workspace @dddforum/backend",
     "build:ci:backend": "npm run build --workspace @dddforum/shared && npm run build --workspace @dddforum/backend",
     "build:ci:frontend": "npm run build --workspace @dddforum/shared && npm run build --workspace @dddforum/frontend",
     "start:ci:backend": "npm run start:ci --workspace @dddforum/backend",
@@ -32,8 +34,6 @@
     "@typescript-eslint/eslint-plugin": "^5.60.1",
     "@typescript-eslint/parser": "^5.60.1",
     "cross-env": "^7.0.3",
-    "dotenv": "^16.3.1",
-    "dotenv-cli": "^7.2.1",
     "eslint": "^8.44.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",

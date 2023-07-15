@@ -1,3 +1,4 @@
+import { logger } from '@dddforum/shared/src/logger';
 import cors from 'cors';
 import express from 'express';
 import { Server } from 'http';
@@ -50,7 +51,7 @@ export class WebServer {
     return new Promise((resolve, _reject) => {
       ProcessService.killProcessOnPort(this.config.port, () => {
         this.server = this.express.listen(this.config.port, () => {
-          console.log(`Server is running on port ${this.config.port}`);
+          logger.info(`Server is running on port ${this.config.port}`);
           this.started = true;
           resolve();
         });

@@ -1,9 +1,9 @@
-import dotenv from 'dotenv';
+import { ensureAndLoadEnv } from '@dddforum/shared/src/ensureAndLoadEnv';
+import { logger } from '@dddforum/shared/src/logger';
 import path from 'path';
 
 export default async (): Promise<void> => {
-  const envPath = path.join(__dirname, '../.env.test');
+  logger.info('Starting global test env setup');
 
-  console.log('Reading env file at', envPath);
-  dotenv.config({ path: envPath });
+  await ensureAndLoadEnv(path.resolve(__dirname, '..'));
 };

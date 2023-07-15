@@ -8,10 +8,11 @@
   },
   "devDependencies": {
     "@types/command-exists": "^1.2.0",
-    "command-exists": "^1.2.9",
-    "rimraf": "^3.0.2"
+    "command-exists": "^1.2.9"
   },
   "dependencies": {
-    "typescript": "^5.1.6"
+    "dotenv": "^16.3.1",
+    "pino": "^8.14.1",
+    "pino-pretty": "^10.0.1"
   }
 }

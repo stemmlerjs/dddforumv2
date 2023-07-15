@@ -1,13 +1,10 @@
-import dotenv from 'dotenv';
+import { prepareEnv } from '@dddforum/build-tools/src/commands/prepareEnv';
 import path from 'path';
 
-import { prepareDev } from '../prepareDev';
-
 export default async (): Promise<void> => {
-  prepareDev();
-
-  const envPath = path.join(__dirname, '../.env.development');
-
-  console.log('Reading env file at', envPath);
-  dotenv.config({ path: envPath });
+  await prepareEnv({
+    cwd: path.resolve(__dirname, '..'),
+    relativeDockerComposeFilePath: './docker-compose.yml',
+    relativeOrmSchemaPath: './src/shared/persistence/prisma/schema.prisma',
+  });
 };

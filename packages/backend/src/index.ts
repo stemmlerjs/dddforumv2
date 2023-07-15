@@ -1,8 +1,19 @@
 import { config } from '@dddforum/shared/src/config/appConfig.shared';
+import { ensureAndLoadEnv } from '@dddforum/shared/src/ensureAndLoadEnv';
+import { logger } from '@dddforum/shared/src/logger';
+import path from 'path';
 
 import { UserController } from './modules/users/userController';
 import { WebServer } from './shared/http/webServer';
 
-const userController = new UserController();
+const boot = async () => {
+  logger.info('Starting backend');
 
-new WebServer({ port: config.api.port }, userController).start();
+  await ensureAndLoadEnv(path.resolve(__dirname, '..'));
+
+  const userController = new UserController();
+
+  new WebServer({ port: config.api.port }, userController).start();
+};
+
+boot();

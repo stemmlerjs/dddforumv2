@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "clean": "rimraf ./dist",
-    "build": "npm run clean && ts-node build-script.ts",
+    "build": "npm run clean && cross-env NODE_ENV=staging ts-node buildScript.ts",
     "start:dev": "cross-env BROWSER=none PORT=3001 BUILD_PATH='./dist' react-scripts start"
   },
   "browserslist": {
@@ -37,7 +37,6 @@
     "identity-obj-proxy": "^3.0.0",
     "jest-environment-jsdom": "^29.6.1",
     "puppeteer": "^20.8.0",
-    "rimraf": "^3.0.2",
     "react-scripts": "5.0.1"
   }
 }
