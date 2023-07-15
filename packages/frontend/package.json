@@ -37,7 +37,6 @@
     "identity-obj-proxy": "^3.0.0",
     "jest-environment-jsdom": "^29.6.1",
     "puppeteer": "^20.8.0",
-    "rimraf": "^3.0.2",
     "react-scripts": "5.0.1"
   }
 }

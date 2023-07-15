@@ -8,10 +8,6 @@
   },
   "devDependencies": {
     "@types/command-exists": "^1.2.0",
-    "command-exists": "^1.2.9",
-    "rimraf": "^3.0.2"
-  },
-  "dependencies": {
-    "typescript": "^5.1.6"
+    "command-exists": "^1.2.9"
   }
 }
