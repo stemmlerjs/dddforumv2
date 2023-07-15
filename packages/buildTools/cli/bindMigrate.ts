@@ -6,7 +6,7 @@ export const bindMigrate = (program: Command) => {
   return program
     .command('migrate')
     .description('Migrate database')
-    .requiredOption('-o <ormSchemaPath>', 'orm schema file path')
+    .requiredOption('-o <ormSchemaPath>', 'ORM schema file path')
     .action(async ({ o: ormSchemaPath }) => {
       await migrate({
         relativeOrmSchemaPath: ormSchemaPath,
