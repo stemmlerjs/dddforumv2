@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main # or specify your desired branch
-      - refactor/ci
 
 jobs:
   build-test-lint-archive:
