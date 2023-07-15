@@ -22,14 +22,14 @@ jobs:
       - name: Install
         run: npm ci
 
+      - name: Lint
+        run: npm run lint
+
       - name: Build
         run: npm run build
 
       - name: Test (core unit tests)
         run: npm run test:unit
-
-      - name: Lint
-        run: npm run lint
 
       - name: Archive Frontend
         id: frontend-build
