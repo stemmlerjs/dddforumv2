@@ -13,7 +13,6 @@
     "npm": ">=7.0.0"
   },
   "scripts": {
-    "setup": "echo 'Installing Globals' && npm install -g typescript @types/node rimraf cross-env && echo 'Installing' && npm install",
     "clean": "npm run clean --workspaces --if-present",
     "build": "npm run build --workspaces --if-present",
     "build:ci:backend": "npm run build --workspace @dddforum/shared && npm run build --workspace @dddforum/backend",
@@ -28,11 +27,8 @@
     "test:infra": "jest -c jest.config.infra.ts"
   },
   "devDependencies": {
-    "@types/cors": "^2.8.13",
-    "@types/express": "^4.17.17",
     "@types/jest": "^29.5.2",
     "@types/node": "^18.16.19",
-    "@types/supertest": "^2.0.12",
     "@typescript-eslint/eslint-plugin": "^5.60.1",
     "@typescript-eslint/parser": "^5.60.1",
     "cross-env": "^7.0.3",

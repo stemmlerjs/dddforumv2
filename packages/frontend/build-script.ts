@@ -1,5 +1,5 @@
 import { execSync } from 'child_process';
-import * as path from 'path'
+import * as path from 'path';
 
 function getEnvFile(): string {
   const nodeEnv = process.env.NODE_ENV?.toLowerCase() || 'development';
@@ -22,7 +22,7 @@ const build = () => {
     stdio: 'inherit',
   } as const;
 
-  console.log(`Building using ${envFile}`)
+  console.log(`Building using ${envFile}`);
 
   try {
     execSync(`dotenv -e ${envFile} cross-env react-scripts build`, execParams);
@@ -30,7 +30,6 @@ const build = () => {
     console.error('Error executing react-scripts build:', error);
     process.exit(1);
   }
-  
-}
+};
 
 build();

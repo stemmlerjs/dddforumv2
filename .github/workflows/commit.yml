@@ -18,20 +18,17 @@ jobs:
         with:
           node-version: 16.16
 
-      - name: Install Globals
-        run: npm install -g typescript @types/node rimraf cross-env
-
       - name: Install
-        run: npm install
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
 
       - name: Build
         run: npm run build
 
       - name: Test (core unit tests)
         run: npm run test:unit
-
-      - name: Lint
-        run: npm run lint
 
       - name: Archive Frontend
         id: frontend-build
