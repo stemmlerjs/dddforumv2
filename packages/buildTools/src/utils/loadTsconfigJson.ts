@@ -3,10 +3,6 @@ import { stat } from 'fs';
 import path from 'path';
 import util from 'util';
 
-export interface PackageJson {
-  name: 'string';
-}
-
 export interface TsconfigJson {
   // Refine interface when needed
   [key: string]: unknown;

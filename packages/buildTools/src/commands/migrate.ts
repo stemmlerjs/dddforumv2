@@ -6,14 +6,14 @@ import util from 'util';
 
 import { loadPackageJson } from '../utils/loadPackageJson';
 
-interface PrepareEnvOptions {
+interface MigrateOptions {
   cwd?: string;
   relativeOrmSchemaPath: string;
 }
 
 const execAsync = util.promisify(exec);
 
-export const migrate = async (options: PrepareEnvOptions) => {
+export const migrate = async (options: MigrateOptions) => {
   const cwd = options.cwd ?? process.cwd();
 
   logger.info(`Applying migrations in ${cwd}`);
