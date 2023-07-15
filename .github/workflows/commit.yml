@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main # or specify your desired branch
+      - refactor/ci
 
 jobs:
   build-test-lint-archive:
@@ -18,11 +19,8 @@ jobs:
         with:
           node-version: 16.16
 
-      - name: Install Globals
-        run: npm install -g typescript @types/node rimraf cross-env
-
       - name: Install
-        run: npm install
+        run: npm ci
 
       - name: Build
         run: npm run build

@@ -5,8 +5,8 @@
   "license": "ISC",
   "main": "build/index.js",
   "scripts": {
-    "clean": "npx rimraf ./dist",
-    "build": "npm run clean && tsc -b tsconfig.build.json && npx tsc-alias -p tsconfig.build.json -r ../../tsAliasesReplacer.js",
+    "clean": "rimraf ./dist",
+    "build": "npm run clean && tsc -b tsconfig.build.json && tsc-alias -p tsconfig.build.json -r ../../tsAliasesReplacer.js",
     "migrate": "prisma db push --schema src/shared/persistence/prisma/schema.prisma",
     "start:ci": "dotenv -e .env.staging -- npm run migrate && dotenv -e .env.staging -- node dist/index.js",
     "start:dev": "ts-node -r tsconfig-paths/register prepareDevCli.ts .env.development && dotenv -e .env.development -- nodemon"
@@ -19,6 +19,9 @@
     "prisma": "^4.16.0"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.13",
+    "@types/express": "^4.17.17",
+    "@types/supertest": "^2.0.12",
     "rimraf": "^3.0.2",
     "nodemon": "^2.0.19",
     "supertest": "^6.3.3",
