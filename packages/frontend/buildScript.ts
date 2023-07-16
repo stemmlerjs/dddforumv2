@@ -1,17 +1,16 @@
 import { ensureAndLoadEnv } from '@dddforum/shared/src/ensureAndLoadEnv';
 import { logger } from '@dddforum/shared/src/logger';
-import { exec } from 'child_process';
+import execSh from 'exec-sh';
 import path from 'path';
-import util from 'util';
+
+const { promise: execShAsync } = execSh;
 
 import { name } from './package.json';
-
-const execAsync = util.promisify(exec);
 
 const build = async () => {
   logger.info(`Building ${name}`);
   await ensureAndLoadEnv(path.resolve(__dirname));
-  await execAsync(`react-scripts build`);
+  await execShAsync(`react-scripts build`);
 };
 
 build();

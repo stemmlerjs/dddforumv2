@@ -34,6 +34,7 @@
     "@types/axios": "^0.14.0",
     "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.6",
+    "exec-sh": "^0.4.0",
     "identity-obj-proxy": "^3.0.0",
     "jest-environment-jsdom": "^29.6.1",
     "puppeteer": "^20.8.0",
