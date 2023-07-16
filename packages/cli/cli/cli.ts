@@ -9,7 +9,7 @@ import { bindPrepareEnv } from './bindPrepareEnv';
 
 const program = new Command();
 
-program.name('@DDD forum build utils').description('CLI to build @DDD forum packages').version(version);
+program.name('@DDD forum BP CLI').description('CLI to simplify @DDD forum scripting and building').version(version);
 
 bindBuild(program);
 bindPrepareEnv(program);
