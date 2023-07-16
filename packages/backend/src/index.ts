@@ -1,19 +1,17 @@
-import { config } from '@dddforum/shared/src/config/appConfig.shared';
-import { ensureAndLoadEnv } from '@dddforum/shared/src/ensureAndLoadEnv';
+import { ensureAndLoadEnvSync } from '@dddforum/shared/src/ensureAndLoadEnv';
 import { logger } from '@dddforum/shared/src/logger';
 import path from 'path';
+
+logger.info('Starting backend');
+
+// Must go before any Prisma imports
+ensureAndLoadEnvSync(path.resolve(__dirname, '..'));
+
+import { config } from '@dddforum/shared/src/config/appConfig.shared';
 
 import { UserController } from './modules/users/userController';
 import { WebServer } from './shared/http/webServer';
 
-const boot = async () => {
-  logger.info('Starting backend');
+const userController = new UserController();
 
-  await ensureAndLoadEnv(path.resolve(__dirname, '..'));
-
-  const userController = new UserController();
-
-  new WebServer({ port: config.api.port }, userController).start();
-};
-
-boot();
+new WebServer({ port: config.api.port }, userController).start();
