@@ -33,7 +33,13 @@ export const build = async (options: BuildOptions) => {
 
   const tsAliasesReplacerPath = path.join(__dirname, 'tsAliasesReplacer.js');
 
-  await asyncExecSh(`tsc -b ${tsconfigPath} && tsc-alias -p ${tsconfigPath} -r ${tsAliasesReplacerPath}`, spawnOptions);
+  logger.info(`Transpiling code`);
+
+  await asyncExecSh(`tsc -b ${tsconfigPath}`, spawnOptions);
+
+  logger.info(`Post-processing imports`);
+
+  await asyncExecSh(`tsc-alias -p ${tsconfigPath} -r ${tsAliasesReplacerPath}`, spawnOptions);
 
   logger.info(`Package ${packageJson.name} has been built`);
 };

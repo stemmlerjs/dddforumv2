@@ -10,6 +10,8 @@ import { name } from './package.json';
 const build = async () => {
   logger.info(`Building ${name}`);
   await ensureAndLoadEnv(path.resolve(__dirname));
+
+  logger.info(`Transpiling code (creating bundle)`);
   await execShAsync(`react-scripts build`);
 };
 
