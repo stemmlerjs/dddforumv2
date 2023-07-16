@@ -16,7 +16,6 @@
   "scripts": {
     "clean": "npm run clean --workspaces --if-present",
     "build": "npm run build --workspaces --if-present",
-    "build:backend": "npm run build --workspace @dddforum/backend",
     "build:ci:backend": "npm run build --workspace @dddforum/shared && npm run build --workspace @dddforum/backend",
     "build:ci:frontend": "npm run build --workspace @dddforum/shared && npm run build --workspace @dddforum/frontend",
     "start:ci:backend": "npm run start:ci --workspace @dddforum/backend",
