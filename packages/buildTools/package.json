@@ -12,8 +12,9 @@
   "dependencies": {
     "@commander-js/extra-typings": "^11.0.0",
     "@dddforum/shared": "^0.1.0",
-    "commander": "^11.0.0",
     "command-exists": "^1.2.9",
+    "commander": "^11.0.0",
+    "exec-sh": "^0.4.0",
     "prisma": "^4.16.0",
     "ts-alias": "^0.0.7"
   }

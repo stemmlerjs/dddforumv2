@@ -32,8 +32,7 @@ export const loadPackageJson = async (options: LoadPackageJsonOptions = {}): Pro
     throw new Error(`Could not find package.json`);
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
-  const packageJson: PackageJson = require(packageJsonPath);
+  const packageJson: PackageJson = await import(packageJsonPath);
 
   logger.info(`package.json has been loaded for ${packageJson.name}`);
 

@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "description": "A basic typescript app starter for 2023.",
   "license": "ISC",
-  "main": "build/index.js",
   "scripts": {
     "clean": "rimraf ./dist",
     "build": "npm run clean && dddforumBuildTools build -c ./tsconfig.build.json",

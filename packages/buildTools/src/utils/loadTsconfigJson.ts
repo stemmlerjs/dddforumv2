@@ -35,8 +35,7 @@ export const loadTsconfigJson = async (options: LoadTsconfigJsonOptions): Promis
     throw new Error(`Could not find tsconfig.json`);
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
-  const tsconfigJson: TsconfigJson = require(tsconfigPath);
+  const tsconfigJson: TsconfigJson = await import(tsconfigPath);
 
   logger.info(`tsconfig.json has been loaded`);
 

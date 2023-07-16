@@ -3,7 +3,7 @@
   "compilerOptions": {
     "outDir": "./dist",
     "types": ["jest"],
-    "lib": ["es6", "dom"],
+    "lib": ["DOM"],
     "jsx": "react"
   }
 }

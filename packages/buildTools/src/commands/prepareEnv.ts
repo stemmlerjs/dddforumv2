@@ -1,12 +1,14 @@
 import { ensureAndLoadEnv } from '@dddforum/shared/src/ensureAndLoadEnv';
 import { logger } from '@dddforum/shared/src/logger';
-import { exec } from 'child_process';
+import { SpawnOptions } from 'child_process';
+import execSh from 'exec-sh';
 import path from 'path';
-import util from 'util';
 
 import { checkDocker } from '../utils/checkDocker';
 import { loadPackageJson } from '../utils/loadPackageJson';
 import { migrate } from './migrate';
+
+const { promise: asyncExecSh } = execSh;
 
 interface PrepareEnvOptions {
   cwd?: string;
@@ -14,8 +16,6 @@ interface PrepareEnvOptions {
   dockerComposeFilePath: string;
   ormSchemaPath: string;
 }
-
-const execAsync = util.promisify(exec);
 
 export const prepareEnv = async (options: PrepareEnvOptions) => {
   const cwd = options.cwd ?? process.cwd();
@@ -31,9 +31,10 @@ export const prepareEnv = async (options: PrepareEnvOptions) => {
     ? options.ormSchemaPath
     : path.resolve(cwd, options.ormSchemaPath);
 
-  const execParams = {
+  const spawnOptions: SpawnOptions = {
     cwd: packageJsonDirPath,
-  } as const;
+    stdio: 'inherit',
+  };
 
   logger.info(`Preparing environment for ${packageJson.name}`);
 
@@ -42,11 +43,11 @@ export const prepareEnv = async (options: PrepareEnvOptions) => {
 
   logger.info(`Starting docker-compose using ${dockerComposeFilePath}`);
 
-  await execAsync(`docker-compose -f ${dockerComposeFilePath} up --build -d`, execParams);
+  await asyncExecSh(`docker-compose -f ${dockerComposeFilePath} up --build -d`, spawnOptions);
 
   logger.info(`Generating ORM client ${ormSchemaPath}`);
 
-  await execAsync(`prisma generate --schema ${ormSchemaPath}`, execParams);
+  await asyncExecSh(`prisma generate --schema ${ormSchemaPath}`, spawnOptions);
   await migrate({ cwd, ormSchemaPath: options.ormSchemaPath });
 
   logger.info(`Environment has been prepared for ${packageJson.name}`);

@@ -1,14 +1,14 @@
 #!/usr/bin/env ts-node
 
 import { logger } from '@dddforum/shared/src/logger';
-import { exec } from 'child_process';
+import { SpawnOptions } from 'child_process';
+import execSh from 'exec-sh';
 import path from 'path';
-import util from 'util';
 
 import { loadPackageJson } from '../../utils/loadPackageJson';
 import { loadTsconfigJson } from '../../utils/loadTsconfigJson';
 
-const execAsync = util.promisify(exec);
+const { promise: asyncExecSh } = execSh;
 
 interface BuildOptions {
   cwd?: string;
@@ -24,15 +24,16 @@ export const build = async (options: BuildOptions) => {
     cwd,
     tsconfigPath: options.tsconfigPath,
   });
-  const execParams = {
+  const spawnOptions: SpawnOptions = {
     cwd: packageJsonDirPath,
-  } as const;
+    stdio: 'inherit',
+  };
 
   logger.info(`Building package ${packageJson.name}`);
 
   const tsAliasesReplacerPath = path.join(__dirname, 'tsAliasesReplacer.js');
 
-  await execAsync(`tsc -b ${tsconfigPath} && tsc-alias -p ${tsconfigPath} -r ${tsAliasesReplacerPath}`, execParams);
+  await asyncExecSh(`tsc -b ${tsconfigPath} && tsc-alias -p ${tsconfigPath} -r ${tsAliasesReplacerPath}`, spawnOptions);
 
   logger.info(`Package ${packageJson.name} has been built`);
 };
