@@ -4,7 +4,7 @@ import path from 'path';
 
 logger.info('Starting backend');
 
-// Must go before any Prisma imports
+// Must go before any Prisma imports (including transitive ones)
 ensureAndLoadEnvSync(path.resolve(__dirname, '..'));
 
 import { config } from '@dddforum/shared/src/config/appConfig.shared';
