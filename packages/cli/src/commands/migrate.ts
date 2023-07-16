@@ -1,9 +1,8 @@
 import { ensureAndLoadEnv } from '@dddforum/shared/src/ensureAndLoadEnv';
 import { logger } from '@dddforum/shared/src/logger';
-import { SpawnOptions } from 'child_process';
 import execSh from 'exec-sh';
-import path from 'path';
 
+import { getAbsolutePath } from '../utils/getAbsolutePath';
 import { loadPackageJson } from '../utils/loadPackageJson';
 
 const { promise: asyncExecSh } = execSh;
@@ -15,24 +14,18 @@ interface MigrateOptions {
 
 export const migrate = async (options: MigrateOptions) => {
   const cwd = options.cwd ?? process.cwd();
+  const ormSchemaPath = getAbsolutePath({ cwd, path: options.ormSchemaPath });
 
   logger.info(`Applying migrations in ${cwd}`);
 
   const { packageJsonDirPath, packageJson } = await loadPackageJson({ cwd });
 
-  const ormSchemaPath = path.isAbsolute(options.ormSchemaPath)
-    ? options.ormSchemaPath
-    : path.resolve(cwd, options.ormSchemaPath);
-
-  const spawnOptions: SpawnOptions = {
-    cwd: packageJsonDirPath,
-    stdio: 'inherit',
-  };
+  await ensureAndLoadEnv(packageJsonDirPath);
 
   logger.info(`Use ${ormSchemaPath} to apply migrations`);
-
-  await ensureAndLoadEnv(packageJsonDirPath);
-  await asyncExecSh(`prisma db push --schema ${ormSchemaPath}`, spawnOptions);
+  await asyncExecSh(`prisma db push --schema ${ormSchemaPath}`, {
+    cwd: packageJsonDirPath,
+  });
 
   logger.info(`Migrations have been applied for ${packageJson.name}`);
 };

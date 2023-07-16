@@ -3,6 +3,8 @@ import { stat } from 'fs';
 import path from 'path';
 import util from 'util';
 
+import { getAbsolutePath } from './getAbsolutePath';
+
 export interface TsconfigJson {
   // Refine interface when needed
   [key: string]: unknown;
@@ -23,10 +25,7 @@ const statAsync = util.promisify(stat);
 
 export const loadTsconfigJson = async (options: LoadTsconfigJsonOptions): Promise<LoadTsconfigJsonResult> => {
   const cwd = options.cwd ?? process.cwd();
-
-  const tsconfigPath = path.isAbsolute(options.tsconfigPath)
-    ? options.tsconfigPath
-    : path.resolve(cwd, options.tsconfigPath);
+  const tsconfigPath = getAbsolutePath({ cwd, path: options.tsconfigPath });
   const tsconfigDirPath = path.dirname(tsconfigPath);
 
   logger.info(`Trying to load tsconfig in ${tsconfigDirPath}`);
