@@ -10,8 +10,8 @@ export const bindPrepareEnv = (program: Command) => {
     .requiredOption('-o <ormSchemaPath>', 'ORM schema file path')
     .action(async ({ d: dockerComposeFilePath, o: ormSchemaPath }) => {
       await prepareEnv({
-        relativeDockerComposeFilePath: dockerComposeFilePath,
-        relativeOrmSchemaPath: ormSchemaPath,
+        dockerComposeFilePath,
+        ormSchemaPath,
       });
     });
 };

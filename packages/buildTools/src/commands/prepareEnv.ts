@@ -11,8 +11,8 @@ import { migrate } from './migrate';
 interface PrepareEnvOptions {
   cwd?: string;
   packagePath?: string;
-  relativeDockerComposeFilePath: string;
-  relativeOrmSchemaPath: string;
+  dockerComposeFilePath: string;
+  ormSchemaPath: string;
 }
 
 const execAsync = util.promisify(exec);
@@ -23,8 +23,14 @@ export const prepareEnv = async (options: PrepareEnvOptions) => {
   logger.info(`Preparing environment in ${cwd}`);
 
   const { packageJsonDirPath, packageJson } = await loadPackageJson({ cwd });
-  const dockerComposeFilePath = path.resolve(cwd, options.relativeDockerComposeFilePath);
-  const ormSchemaPath = path.resolve(cwd, options.relativeOrmSchemaPath);
+
+  const dockerComposeFilePath = path.isAbsolute(options.dockerComposeFilePath)
+    ? options.dockerComposeFilePath
+    : path.resolve(cwd, options.dockerComposeFilePath);
+  const ormSchemaPath = path.isAbsolute(options.ormSchemaPath)
+    ? options.ormSchemaPath
+    : path.resolve(cwd, options.ormSchemaPath);
+
   const execParams = {
     cwd: packageJsonDirPath,
   } as const;
@@ -41,8 +47,7 @@ export const prepareEnv = async (options: PrepareEnvOptions) => {
   logger.info(`Generating ORM client ${ormSchemaPath}`);
 
   await execAsync(`prisma generate --schema ${ormSchemaPath}`, execParams);
-
-  await migrate({ cwd, relativeOrmSchemaPath: options.relativeOrmSchemaPath });
+  await migrate({ cwd, ormSchemaPath: options.ormSchemaPath });
 
   logger.info(`Environment has been prepared for ${packageJson.name}`);
 };

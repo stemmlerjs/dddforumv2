@@ -22,7 +22,7 @@ export const build = async (options: BuildOptions) => {
   const { packageJson, packageJsonDirPath } = await loadPackageJson({ cwd });
   const { tsconfigPath } = await loadTsconfigJson({
     cwd,
-    relativeTsconfigPath: options.tsconfigPath,
+    tsconfigPath: options.tsconfigPath,
   });
   const execParams = {
     cwd: packageJsonDirPath,

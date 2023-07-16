@@ -9,7 +9,7 @@ export const bindMigrate = (program: Command) => {
     .requiredOption('-o <ormSchemaPath>', 'ORM schema file path')
     .action(async ({ o: ormSchemaPath }) => {
       await migrate({
-        relativeOrmSchemaPath: ormSchemaPath,
+        ormSchemaPath,
       });
     });
 };

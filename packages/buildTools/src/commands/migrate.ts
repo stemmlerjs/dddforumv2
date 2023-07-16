@@ -8,7 +8,7 @@ import { loadPackageJson } from '../utils/loadPackageJson';
 
 interface MigrateOptions {
   cwd?: string;
-  relativeOrmSchemaPath: string;
+  ormSchemaPath: string;
 }
 
 const execAsync = util.promisify(exec);
@@ -19,7 +19,11 @@ export const migrate = async (options: MigrateOptions) => {
   logger.info(`Applying migrations in ${cwd}`);
 
   const { packageJsonDirPath, packageJson } = await loadPackageJson({ cwd });
-  const ormSchemaPath = path.resolve(packageJsonDirPath, options.relativeOrmSchemaPath);
+
+  const ormSchemaPath = path.isAbsolute(options.ormSchemaPath)
+    ? options.ormSchemaPath
+    : path.resolve(cwd, options.ormSchemaPath);
+
   const execParams = {
     cwd: packageJsonDirPath,
   } as const;

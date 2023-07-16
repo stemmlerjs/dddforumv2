@@ -10,7 +10,7 @@ export interface TsconfigJson {
 
 interface LoadTsconfigJsonOptions {
   cwd: string;
-  relativeTsconfigPath: string;
+  tsconfigPath: string;
 }
 
 interface LoadTsconfigJsonResult {
@@ -24,7 +24,9 @@ const statAsync = util.promisify(stat);
 export const loadTsconfigJson = async (options: LoadTsconfigJsonOptions): Promise<LoadTsconfigJsonResult> => {
   const cwd = options.cwd ?? process.cwd();
 
-  const tsconfigPath = path.resolve(cwd, options.relativeTsconfigPath);
+  const tsconfigPath = path.isAbsolute(options.tsconfigPath)
+    ? options.tsconfigPath
+    : path.resolve(cwd, options.tsconfigPath);
   const tsconfigDirPath = path.dirname(tsconfigPath);
 
   logger.info(`Trying to load tsconfig in ${tsconfigDirPath}`);
