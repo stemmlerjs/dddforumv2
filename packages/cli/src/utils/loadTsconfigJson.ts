@@ -9,7 +9,7 @@ export interface TsconfigJson {
 }
 
 interface LoadTsconfigJsonOptions {
-  cwd: string;
+  cwd?: string;
   tsconfigPath: string;
 }
 
