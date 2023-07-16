@@ -1,6 +1,4 @@
-name: Commit Phase
+name: Acceptance Test
 
 on:
-  push:
-    branches:
-      - main # or specify your desired branch
+  workflow_dispatch:
