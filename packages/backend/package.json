@@ -5,9 +5,9 @@
   "license": "ISC",
   "scripts": {
     "clean": "rimraf ./dist",
-    "build": "npm run clean && dddforumBuildTools build -c ./tsconfig.build.json",
-    "start:ci": "cross-env NODE_ENV=staging dddforumBuildTools migrate -o ./src/shared/persistence/prisma/schema.prisma && cross-env NODE_ENV=staging node dist/index.js",
-    "start:dev": "cross-env NODE_ENV=development dddforumBuildTools prepareEnv -d ./docker-compose.yml -o ./src/shared/persistence/prisma/schema.prisma && cross-env NODE_ENV=development nodemon"
+    "build": "npm run clean && dfCli build -c ./tsconfig.build.json",
+    "start:ci": "cross-env NODE_ENV=staging dfCli migrate -o ./src/shared/persistence/prisma/schema.prisma && cross-env NODE_ENV=staging node dist/index.js",
+    "start:dev": "cross-env NODE_ENV=development dfCli prepareEnv -d ./docker-compose.yml -o ./src/shared/persistence/prisma/schema.prisma && cross-env NODE_ENV=development nodemon"
   },
   "dependencies": {
     "@dddforum/shared": "^0.1.0",
@@ -17,7 +17,7 @@
     "prisma": "^4.16.0"
   },
   "devDependencies": {
-    "@dddforum/build-tools": "^0.1.0",
+    "@dddforum/cli": "^0.1.0",
     "@types/cors": "^2.8.13",
     "@types/express": "^4.17.17",
     "@types/supertest": "^2.0.12",

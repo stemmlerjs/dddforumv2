@@ -1,4 +1,4 @@
-import { prepareEnv } from '@dddforum/build-tools/src/commands/prepareEnv';
+import { prepareEnv } from '@dddforum/cli/src/commands/prepareEnv';
 import path from 'path';
 
 export default async (): Promise<void> => {

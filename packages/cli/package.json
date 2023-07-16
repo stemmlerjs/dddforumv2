@@ -1,10 +1,10 @@
 {
-  "name": "@dddforum/build-tools",
+  "name": "@dddforum/cli",
   "version": "0.1.0",
   "private": true,
   "scripts": {},
   "bin": {
-    "dddforumBuildTools": "./cli/cli.ts"
+    "dfCli": "./cli/cli.ts"
   },
   "devDependencies": {
     "@types/command-exists": "^1.2.0"

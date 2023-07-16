@@ -1,6 +1,6 @@
 node_modules
 build
-!packages/buildTools/src/commands/build
+!packages/cli/src/commands/build
 dist
 .vscode
 .env
