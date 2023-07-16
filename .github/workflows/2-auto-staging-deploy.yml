@@ -1,47 +1,15 @@
-name: Commit Phase
+name: Automatically Deploy to Staging
 
 on:
-  push:
-    branches:
-      - main # or specify your desired branch
+  workflow_run:
+    workflows: ["Commit Phase"]
+    types:
+      - completed
 
 jobs:
-  build-test-lint-archive:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: 16.16
-
-      - name: Install
-        run: npm ci
-
-      - name: Lint
-        run: npm run lint
-
-      - name: Build
-        run: npm run build
-
-      - name: Test (core unit tests)
-        run: npm run test:unit
-
-      - name: Archive Frontend
-        id: frontend-build
-        uses: actions/upload-artifact@v2
-        with:
-          name: frontend-build-${{ github.run_number }}
-          path: ./packages/frontend/dist
-          # Customize Artifact Retention Period
-          retention-days: 2
-
   deploy-staging:
     runs-on: ubuntu-latest
-    needs: [build-test-lint-archive]
+    needs: [lint-build-test-archive]
 
     steps:
       - name: Checkout repository
@@ -50,7 +18,7 @@ jobs:
       - name: Download frontend build artifact
         uses: actions/download-artifact@v2
         with:
-          name: frontend-build-${{ github.run_number }}
+          name: frontend-build-latest
           path: ./frontend-build
         
       - name: Deploy to Frontend Staging on Netlify
