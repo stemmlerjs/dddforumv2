@@ -1,8 +1,18 @@
-# DDDForum V2
+# DDDForum V2: Phases of Craftship
 
 ## What is this?
 
-This is the _Best Practice-First_ approach to the DDDForum project that we perform in The Phases of Craftship.
+This is the v2 of [dddforum]() which we're using to demonstrate moving through the Phases of Craftship in The Software Essentialist. 
+
+## Phases
+
+1. Code-First
+2. Best Practice-First
+3. Pattern-First
+4. Responsibility-First
+5. Value-First
+
+## The Best Practice-First Phase
 
 At this level, the focus is on implementing the most valuable techniques from BDD, Continuous Delivery, Object-Oriented Design, TDD & so on. 
 
@@ -13,7 +23,7 @@ The work we have to do here is broken into 4 key parts:
 3. | Deploying the Skeleton to a Minimal Deployment Pipeline (w/ GitHub Actions, Render & Netlify)
 4. | Development Environment Refinements (for greater Discoverability & Understanding)
 
-## What's most important here?
+#### What's most important here?
 
 Assuming we want to test everything from this folder, you can test/explore the following.
 
