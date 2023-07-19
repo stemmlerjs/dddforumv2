@@ -1,17 +1,17 @@
 {
   "compilerOptions": {
-    "baseUrl": "./",
     "target": "es5",
     "module": "commonjs",
     "lib": ["es6"],
+    "allowJs": true,
+    "outDir": "dist",
+    "rootDir": "src",
     "strict": true,
     "esModuleInterop": true,
     "types": ["node", "jest"],
-    "resolveJsonModule": true,
-    "paths": {
-      "@dddforum/backend/*": ["./packages/backend/*"],
-      "@dddforum/frontend/*": ["./packages/frontend/*"],
-      "@dddforum/shared/*": ["./packages/shared/*"]
-    }
-  }
+    "skipLibCheck": true,
+    "noImplicitAny": false,
+  },
+  "include": ["src/**/*"],
+  "exclude": ["src/**/*.spec.ts"]
 }
