@@ -1,4 +1,4 @@
-# DDDForum: Best-Practice First
+# DDDForum V2
 
 ## What is this?
 
