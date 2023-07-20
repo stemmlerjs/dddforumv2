@@ -1,4 +1,0 @@
-name: Acceptance Test
-
-on:
-  workflow_dispatch:
