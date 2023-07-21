@@ -52,7 +52,7 @@ This keeps our development environments consistent and reproducible across diffe
 
 Before you do anything, install the project with:
 
-```npm run ci```
+```npm ci```
 
 This will perform a clean install specifically from the package-lock.json.
 

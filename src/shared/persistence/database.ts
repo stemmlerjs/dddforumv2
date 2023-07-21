@@ -9,12 +9,12 @@ export class Database {
     this.prisma = new PrismaClient();
   }
 
-  public async connect (): Promise<Error | void> {
+  public async connect (): Promise<Error | boolean> {
     return new Promise(async (resolve, reject) => {
       return this.prisma.$connect()
         .then(() => {
           console.log('Connection to the database successful.');
-          return resolve();
+          return resolve(true);
         })
         .catch((err) => {
           return reject(new Error(`Could not start the database ${err}`));
