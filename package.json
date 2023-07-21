@@ -4,17 +4,18 @@
   "description": "",
   "main": "dist/index.js",
   "engines": {
-    "node": ">= 16.16.0",
-    "npm": ">= 8.19.3"
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
   },
   "directories": {
     "test": "tests"
   },
   "scripts": {
-    "build": "rimraf ./dist && tsc",
-    "generate": "prisma generate --schema src/shared/persistence/prisma/schema.prisma",
-    "migrate": "prisma db push --schema src/shared/persistence/prisma/schema.prisma",
-    "start:dev": "cross-env NODE_ENV=development nodemon",
+    "build": "rimraf ./dist && tsc && npm run generate",
+    "generate": "prisma generate --schema prisma/schema.prisma",
+    "migrate": "prisma db push --schema prisma/schema.prisma",
+    "start:docker:db": "docker-compose up --build -d",
+    "start:dev": "npm run start:docker:db && cross-env NODE_ENV=development npm run generate && npx dotenv -e .env.development npm run migrate && nodemon",
     "start": "npm run build && node dist/index.js",
     "test:unit": "jest -c jest.config.unit.js",
     "test:unit:dev": "cross-env NODE_ENV=development jest -c jest.config.unit.js --watchAll",
@@ -30,6 +31,7 @@
     "@types/supertest": "^2.0.12",
     "cross-env": "^7.0.3",
     "dotenv": "^16.3.1",
+    "dotenv-cli": "^7.2.1",
     "eslint": "^8.20.0",
     "jest": "^28.1.3",
     "jest-cucumber": "^3.0.1",

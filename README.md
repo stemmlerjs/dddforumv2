@@ -31,7 +31,7 @@ At this point, the project architecture can be summarized as follows:
 
 ### 2.1. Dependencies
 
-
+**Node**
 
 **Docker**
 
