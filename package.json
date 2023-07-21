@@ -1,0 +1,46 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "build/index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "build": "rimraf ./build && tsc",
+    "dev": "nodemon",
+    "generate": "prisma generate --schema src/shared/persistence/prisma/schema.prisma",
+    "migrate": "prisma db push --schema src/shared/persistence/prisma/schema.prisma",
+    "start": "npm run build && node build/index.js",
+    "test:unit": "jest -c jest.config.unit.js",
+    "test:unit:dev": "NODE_ENV=development jest -c jest.config.unit.js --watchAll",
+    "test:infra": "jest -c jest.config.infra.js",
+    "test:infra:dev": "NODE_ENV=development jest -c jest.config.infra.js --watchAll",
+    "test:e2e": "jest -c jest.config.e2e.js",
+    "test:e2e:dev": "NODE_ENV=development jest -c jest.config.e2e.js --watchAll"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.17",
+    "@types/jest": "^28.1.8",
+    "@types/node": "^18.6.1",
+    "@types/supertest": "^2.0.12",
+    "dotenv": "^16.3.1",
+    "eslint": "^8.20.0",
+    "jest": "^28.1.3",
+    "jest-cucumber": "^3.0.1",
+    "nodemon": "^2.0.19",
+    "rimraf": "^3.0.2",
+    "supertest": "^6.3.3",
+    "ts-jest": "^28.0.7",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.5"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^4.16.0",
+    "express": "^4.18.2",
+    "pg": "^8.11.0",
+    "prisma": "^4.16.0"
+  }
+}

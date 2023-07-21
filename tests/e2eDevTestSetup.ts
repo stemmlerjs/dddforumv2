@@ -8,8 +8,6 @@ export default () => {
   let setup = new GlobalSetup();
   setup.runGlobalSetup();
 
-  // e2e setup
-
     // Start the Docker development database
     execSync('docker-compose up --build -d', setup.getExecOptions())
 

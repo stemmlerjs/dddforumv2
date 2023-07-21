@@ -5,6 +5,6 @@ services:
     image: postgres:latest
     container_name: postgres
     ports:
-      - 5430:5430
+      - 5440:5432
     env_file:
-      - .env
+      - .env.development

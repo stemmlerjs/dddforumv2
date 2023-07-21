@@ -37,7 +37,8 @@ export class GlobalSetup {
     const rootPath = this.getRootPath();
 
     // load the env file
-    const envVariablesPath = path.join(rootPath, `.env`);
+    const envVariablesPath = path.join(rootPath, `.env.development`);
+    
     // use dotenv to read all the values of the config file into memory
     dotenv.config({ path: envVariablesPath })
   }
