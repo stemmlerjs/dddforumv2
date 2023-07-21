@@ -18,7 +18,7 @@ export class CompositionRoot {
     return new Database();
   }
   
-  private getDatabase() {
+  public getDatabase() {
     return this.database;
   }
 
