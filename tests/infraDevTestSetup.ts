@@ -1,4 +1,5 @@
 
+import { execSync } from "child_process";
 import { GlobalSetup } from "./globalDevTestSetup"
 
 export default () => {
@@ -7,4 +8,12 @@ export default () => {
   let setup = new GlobalSetup();
   setup.runGlobalSetup();
 
+  // Start the Docker development database
+  execSync('docker-compose up --build -d', setup.getExecOptions())
+
+  // tearing down the database
+  execSync('npx prisma migrate reset --force')
+
+  // running migrations
+  execSync('npx prisma migrate dev')
 }

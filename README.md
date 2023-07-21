@@ -1,6 +1,6 @@
 # DDDForum V2: Phases of Craftship
 
-> This is the backend 
+> This is the [backend e2e assignment](https://www.essentialist.dev/products/the-software-essentialist/categories/2153382759/posts/2168948141) for The Software Essentialist. You can find the assignment and accompanying demo [here](https://www.essentialist.dev/products/the-software-essentialist/categories/2153382759/posts/2168948141).
 
 1. [About](#about)
 1.1. [DDDForum](#dddforum)
@@ -11,13 +11,14 @@
 2.3. [Building](#building)
 2.4. [Starting](#starting)
 3. [How to run the tests](#testing)
-4. [How to develop](#development)
+3.1 [Acceptance (E2E) tests](#e2e)
+3.2 [Integration tests](#infra)
 
-## 1. About
+## 1. <a href="#about">About</a>
 
-### 1.1. DDDForum
+### 1.1.<a href="#dddforum"> DDDForum</a>
 
-### 1.2. Project architecture
+### 1.2. <a href="#architecture">Project architecture</a>
 
 At this point, the project architecture can be summarized as follows:
 
@@ -27,105 +28,59 @@ At this point, the project architecture can be summarized as follows:
 - Docker instance for development environment
 - Jest & Jest-Cucumber & supertest for E2E testing
 
-## 2. Getting started
+![](https://private-user-images.githubusercontent.com/6892666/252122992-4463f520-75fc-464f-8cfc-b8afecac5271.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXkiOiJrZXkxIiwiZXhwIjoxNjg4ODcwOTU3LCJuYmYiOjE2ODg4NzA2NTcsInBhdGgiOiIvNjg5MjY2Ni8yNTIxMjI5OTItNDQ2M2Y1MjAtNzVmYy00NjRmLThjZmMtYjhhZmVjYWM1MjcxLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFJV05KWUFYNENTVkVINTNBJTJGMjAyMzA3MDklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjMwNzA5VDAyNDQxN1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTRhOGQ1MTRmMDFhY2FiYWJlMDFhNjA2MjcxMmFiOWZjNjU1MDFiN2M5ZWFjN2FkYmJiNmYwMWE3M2U2YTFlODImWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.9YW3nzEjFCYeqHrfTl-IOooe3nCjVyL16niTqJtEL9U)
 
-### 2.1. Dependencies
+## 2. <a href="#getting-started">Getting started</a>
+
+### 2.1. <a href="#dependencies">Dependencies</a>
 
 **Node**
 
+- Node version 16.0.0 or higher
+- NPM version 8.0.0 or higher
+
 **Docker**
 
-Ensure you've [installed Docker](https://www.docker.com/products/docker-desktop/) on your machine and have it started.
+- Ensure you've [installed Docker](https://www.docker.com/products/docker-desktop/) on your machine 
+- Ensure you have Docker started
 
-This will allow us to run the local services we need (such as Postgres) without messy setup.
+Docker allows us to run local services we need (such as Postgres) without messy setup.
 
-This keeps our development environments simple and reproducible.
+This keeps our development environments consistent and reproducible across different machines, teams, and so on.
 
-### 2.2. Installing
+### 2.2. <a href="#installing">Installing</a>
 
-### 2.3. Building
+Before you do anything, install the project with:
 
-### 2.4. Starting
+```npm run ci```
 
-## 3. Testing
+This will perform a clean install specifically from the package-lock.json.
 
-## 4. Developing
+### 2.3. <a href="#building">Building</a>
 
-#### What's most important here?
+In order to build the application, make sure to run:
 
-Assuming we want to test everything from this folder, you can test/explore the following.
+```npm run build```
 
-### Pre-requisites
+### 2.4. <a href="#starting">Starting</a>
 
+To start the application in **development mode**, run the following command:
 
+```npm run start:dev```
 
-**Packages**
+## 3. <a href="#testing">Testing</a>
 
-```bash
-npm ci
-```
+### 3.1. <a href="#e2e">Acceptance (E2E Tests)</a>
 
-### 1. Automated Backend E2E tests
+To run the acceptance (E2E tests), run the following command:
 
-Automated tests are _superior_. Here's how we can do it on the backend.
+```npm run test:e2e:dev```
 
-![](https://private-user-images.githubusercontent.com/6892666/252122992-4463f520-75fc-464f-8cfc-b8afecac5271.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXkiOiJrZXkxIiwiZXhwIjoxNjg4ODcwOTU3LCJuYmYiOjE2ODg4NzA2NTcsInBhdGgiOiIvNjg5MjY2Ni8yNTIxMjI5OTItNDQ2M2Y1MjAtNzVmYy00NjRmLThjZmMtYjhhZmVjYWM1MjcxLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFJV05KWUFYNENTVkVINTNBJTJGMjAyMzA3MDklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjMwNzA5VDAyNDQxN1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTRhOGQ1MTRmMDFhY2FiYWJlMDFhNjA2MjcxMmFiOWZjNjU1MDFiN2M5ZWFjN2FkYmJiNmYwMWE3M2U2YTFlODImWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.9YW3nzEjFCYeqHrfTl-IOooe3nCjVyL16niTqJtEL9U)
+### 3.2. <a href="#infra">Integration tests</a>
 
-**Run the E2E tests**
+The integration tests confirm that the web server and the database function as intended.
 
-With the services built, you can now run the E2E tests.
+You can run the integration tests with:
 
-```bash
-npm run test:e2e
-```
+```npm run test:e2e:infra```
 
-**Note**: This will start a PostgreSQL docker container, generate the Prisma client, run migrations, and start the backend server.
-
-### 2. Test a Walking Skeleton (E2e UI to Backend Test Infrastructure)
-
-A walking skeleton is a minimal slice of functionality through all of your major architectural components from the user's perspective.
-
-![](https://private-user-images.githubusercontent.com/6892666/252123183-84b45357-f051-4bf7-a0c5-0fe1367bb731.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXkiOiJrZXkxIiwiZXhwIjoxNjg4ODcxMzI5LCJuYmYiOjE2ODg4NzEwMjksInBhdGgiOiIvNjg5MjY2Ni8yNTIxMjMxODMtODRiNDUzNTctZjA1MS00YmY3LWEwYzUtMGZlMTM2N2JiNzMxLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFJV05KWUFYNENTVkVINTNBJTJGMjAyMzA3MDklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjMwNzA5VDAyNTAyOVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWQ1N2ViMTQxMGUyODJkNDQ0YTg4ZmY3NTc2Y2UzZWQxNTg3MDNkZGU0ZjE5MTM4YzI0ZjkzZjNkMzdhN2UzZDAmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.b3E_gRfDbiKIa4YvgPWmyPCv3V62Cq4KT0Mqeltu7Xo)
-
-Here's how you can test it out locally.
-
-**Step 1: Run the backend in a separate console.**
-
-```bash
-npm run start:dev:backend
-```
-
-> **Note**: This will start a PostgreSQL docker container, generate the Prisma client, run migrations, and start the backend server.
-
-**Step 2: Run the frontend server in a separate console.**
-
-```bash
-npm run start:dev:frontend
-```
-
-### 3. Deploying the Skeleton to a Minimal Deployment Pipeline (w/ GitHub Actions, Render & Netlify)
-
-> Image incoming
-
-... description incoming
-
-### 4. Development Environment Refinements (for greater Discoverability & Understanding)
-
-> Image incoming
-
-... description incoming
-
-## Other
-
-### Run the Backend Integration Tests
-
-We run a few tests on the backend as well to prove that we can:
-
-- Start and stop the web server
-- Connect to the database
-
-You can test these with:
-
-```bash
-npm run test:infra
-```
