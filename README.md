@@ -82,5 +82,5 @@ The integration tests confirm that the web server and the database function as i
 
 You can run the integration tests with:
 
-```npm run test:e2e:infra```
+```npm run test:infra:dev```
 
