@@ -5,7 +5,7 @@ import { prepareDev } from '../prepareDev';
 
 export default async (): Promise<void> => {
   prepareDev();
-  const nodeEnv = process.env.ENV || 'development';
+  const nodeEnv = process.env.NODE_ENV || 'development'
 
   const envPath = path.join(__dirname, `../.env.${nodeEnv}`);
 

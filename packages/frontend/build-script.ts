@@ -2,7 +2,7 @@ import { execSync } from 'child_process';
 import * as path from 'path';
 
 function getEnvFile(): string {
-  const nodeEnv = process.env.ENV?.toLowerCase() || 'development';
+  const nodeEnv = process.env.NODE_ENV?.toLowerCase() || 'development';
 
   switch (nodeEnv) {
     case 'production':
