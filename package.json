@@ -22,9 +22,9 @@
     "start:dev:frontend": "npm run start:dev --workspace @dddforum/frontend",
     "lint": "eslint \"**/src/**/*.ts\"",
     "lint:fix": "npm run lint -- --fix",
-    "test:unit": "jest -c jest.config.unit.ts",
-    "test:e2e": "jest -c jest.config.e2e.ts",
-    "test:infra": "jest -c jest.config.infra.ts"
+    "test:unit": "cross-env NODE_ENV=development jest -c jest.config.unit.ts",
+    "test:e2e": "cross-env NODE_ENV=development jest -c jest.config.e2e.ts",
+    "test:infra": "cross-env NODE_ENV=development jest -c jest.config.infra.ts"
   },
   "devDependencies": {
     "@types/jest": "^29.5.2",
