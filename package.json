@@ -24,8 +24,8 @@
     "lint:fix": "npm run lint -- --fix",
     "test:unit": "cross-env NODE_ENV=development jest -c jest.config.unit.ts",
     "test:e2e": "cross-env NODE_ENV=development jest -c jest.config.e2e.ts",
-    "test:e2e:dev:backend": "npm run test:e2e:dev --workspace @dddforum/backend",
-    "test:e2e:dev:frontend": "npm run test:e2e:dev --workspace @dddforum/frontend",
+    "test:e2e:dev:backend": "cross-env NODE_ENV=development jest -c jest.config.e2e.ts --selectProjects \"Backend (E2E)\"",
+    "test:e2e:dev:frontend": "cross-env NODE_ENV=development jest -c jest.config.e2e.ts --selectProjects \"Frontend (E2E)\"",
     "test:infra": "cross-env NODE_ENV=development jest -c jest.config.infra.ts"
   },
   "devDependencies": {
