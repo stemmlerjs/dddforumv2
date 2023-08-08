@@ -28,13 +28,9 @@
     "test:e2e:dev:frontend": "npm run test:e2e:dev --workspace @dddforum/frontend",
     "test:infra": "cross-env NODE_ENV=development jest -c jest.config.infra.ts"
   },
-  "dependencies": {
-    "axios": "^1.4.0"
-  },
   "devDependencies": {
     "@types/jest": "^29.5.2",
     "@types/node": "^18.16.19",
-    "@types/axios": "^0.14.0",
     "@typescript-eslint/eslint-plugin": "^5.60.1",
     "@typescript-eslint/parser": "^5.60.1",
     "cross-env": "^7.0.3",
