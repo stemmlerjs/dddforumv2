@@ -1,5 +1,5 @@
 import { UserController } from '../../modules/users/userController';
-import { WebServer } from '../http/webServer';
+import { WebServer } from '../server/webServer';
 
 export class CompositionRoot {
   private webServer: WebServer;

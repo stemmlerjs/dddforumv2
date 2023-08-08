@@ -5,7 +5,8 @@
   "scripts": {
     "clean": "rimraf ./dist",
     "build": "npm run clean && ts-node build-script.ts",
-    "start:dev": "cross-env BROWSER=none PORT=3001 BUILD_PATH='./dist' react-scripts start"
+    "start:dev": "cross-env BROWSER=none PORT=3001 BUILD_PATH='./dist' react-scripts start",
+    "test:e2e:dev": "cross-env NODE_ENV=development jest -c jest.config.e2e.ts"
   },
   "browserslist": {
     "production": [
@@ -21,7 +22,6 @@
   },
   "dependencies": {
     "@dddforum/shared": "^0.1.0",
-    "axios": "^1.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.14.1",
@@ -31,7 +31,6 @@
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
-    "@types/axios": "^0.14.0",
     "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.6",
     "identity-obj-proxy": "^3.0.0",
