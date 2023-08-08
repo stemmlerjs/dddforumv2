@@ -1,9 +1,11 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "./dist",
+    "module": "Node16",
+    "target": "ES2022",
+    "lib": ["DOM", "ES2022"],
+    "jsx": "react",
     "types": ["jest"],
-    "lib": ["es6", "dom"],
-    "jsx": "react"
+    "noEmit": true
   }
 }
