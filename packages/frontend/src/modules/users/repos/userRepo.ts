@@ -1,25 +1,21 @@
 import { CreateUserResponse } from '@dddforum/shared/src/users/dtos/usersDTOs.shared';
-import axios from 'axios';
 
 import { RegistrationForm } from '../../../pages/registrationPage/domainObjects/registrationForm';
 import { GlobalCache, UsersState } from '../../../shared/persistence/globalState';
 
+import { DDDForumAPI } from '@dddforum/shared/src/api/dddForumAPI'
+
 export class UserRepository {
-  constructor(private cache: GlobalCache) {}
+  constructor(private cache: GlobalCache, private api: DDDForumAPI) {}
 
   public async createUser(
     registrationForm: RegistrationForm,
     onSuccess: (userState: UsersState) => void,
     onFailure: (err: unknown) => void,
   ) {
-    // Make the request
+    
     try {
-      const response = await axios({
-        method: 'POST',
-        // TODO: Use config for this
-        url: 'http://localhost:3000/users/new',
-        data: registrationForm.toCreateUserDTO(),
-      });
+      const response = await this.api.createNewUser(registrationForm.toCreateUserDTO());
 
       // Save the data somewhere shared so it can be accessed later
       const createUserResponse: CreateUserResponse = response.data;

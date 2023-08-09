@@ -1,5 +1,5 @@
-const apiUrl = process.env.REACT_APP_API_URL ?? '';
-const frontendUrl = process.env.REACT_APP_FRONTEND_URL ?? '';
+const apiUrl = process.env.DDDFORUM_API_URL ?? '';
+const frontendUrl = process.env.DDDFORUM_FRONTEND_URL ?? '';
 
 const config = {
   api: {

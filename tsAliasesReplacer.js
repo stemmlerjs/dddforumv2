@@ -1,6 +1,6 @@
 /**
- * There is no way Typescript replaces paths (aliases) defined in the <root>/tsconfig.json in the production code.
- * Therefore, we need to do it manually. This file contains an imports replacer for the tsc-alias package,
+ * Since we use imports `@dddforum/shared/src/...` we need to replace them with `@dddforum/shared/dist/...`
+ * in the built code. This file contains an imports replacer for the tsc-alias package,
  * which can be used as a post-processing step in the build process.
  */
 
