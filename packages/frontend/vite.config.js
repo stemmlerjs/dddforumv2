@@ -8,7 +8,6 @@ export default defineConfig({
   envPrefix: 'DDDFORUM_',
   plugins: [
     react(),
-    // viteTsconfigPaths(),
     svgrPlugin(),
     checker({
       typescript: true,
