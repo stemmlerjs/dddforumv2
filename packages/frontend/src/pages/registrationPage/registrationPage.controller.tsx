@@ -1,5 +1,5 @@
-import { useNavigate } from 'react-router-dom';
 
+import { useNavigate } from 'react-router-dom';
 import { UserRepository } from '../../modules/users/repos/userRepo';
 import { NotificationService } from '../../shared/notifications/notificationService';
 import { UsersState } from '../../shared/persistence/globalState';

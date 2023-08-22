@@ -28,7 +28,7 @@ export class UserRepository {
         me: createUserResponse.data,
       });
 
-      return onSuccess(this.cache.get('users'));
+      return onSuccess(this.cache.get('users') as UsersState);
     } catch (err) {
       return onFailure(err);
     }

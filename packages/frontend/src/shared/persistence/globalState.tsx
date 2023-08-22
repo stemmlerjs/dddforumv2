@@ -4,28 +4,42 @@ export interface UsersState {
   me?: UserDTO;
 }
 
+export type PostDTO = {
+  title: string;
+}
+
+export interface PostsState {
+  allPosts: PostDTO[]
+}
+
 type GlobalState = {
   users: UsersState;
+  posts: PostsState;
 };
 
 type State = GlobalState[keyof GlobalState];
 
 type Callback = (data: State) => void;
 
-type KeyInCache = 'users';
+type KeyInCache = 'users' | 'posts';
 
 export class GlobalCache {
-  private subscribers: { users: { [key: string]: Callback | undefined } };
+  private subscribers: { 
+    users: { [key: string]: Callback | undefined },
+    posts: { [key: string]: Callback | undefined } 
+  };
+
   private data: GlobalState;
 
   constructor() {
-    this.subscribers = { users: {} };
+    this.subscribers = { users: {}, posts: {} };
     this.data = {
       users: {},
+      posts: { allPosts: [] }
     };
   }
 
-  subscribe(
+  subscribe<T>(
     key: KeyInCache,
     subscriberName: string,
     // eslint-disable-next-line @typescript-eslint/ban-types
@@ -45,6 +59,7 @@ export class GlobalCache {
 
   // eslint-disable-next-line @typescript-eslint/ban-types
   set(key: KeyInCache, data: State) {
+    // @ts-ignore
     this.data[key] = data;
     this.notify(key);
   }

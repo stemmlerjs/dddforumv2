@@ -12,7 +12,7 @@ export class MenuPresenter {
   }
 
   private setupSubscriptions(cache: GlobalCache) {
-    cache.subscribe('users', MenuPresenter.name, (users: UsersState) => this.rebuildViewModel(users));
+    cache.subscribe<UsersState>('users', MenuPresenter.name, (users) => this.rebuildViewModel(users as UsersState));
   }
 
   private rebuildViewModel(users: UsersState) {
@@ -28,7 +28,7 @@ export class MenuPresenter {
   }
 
   async load(cb: (vm: MenuViewModel | undefined) => void) {
-    this.rebuildViewModel(this.cache.get('users'));
+    this.rebuildViewModel(this.cache.get('users') as UsersState);
     cb(this.vm);
   }
 }

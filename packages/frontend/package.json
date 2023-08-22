@@ -5,7 +5,9 @@
   "scripts": {
     "clean": "rimraf ./dist",
     "build": "npm run clean && ts-node build-script.ts",
-    "start:dev": "cross-env BROWSER=none PORT=3001 BUILD_PATH='./dist' react-scripts start"
+    "start:dev": "cross-env BROWSER=none PORT=3001 BUILD_PATH='./dist' react-scripts start",
+    "test:e2e": "jest -c jest.config.e2e.ts",
+    "test:e2e:dev": "NODE_ENV=development jest -c jest.config.e2e.ts --watch"
   },
   "browserslist": {
     "production": [

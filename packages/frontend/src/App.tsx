@@ -5,13 +5,13 @@ import React from 'react';
 
 import FrontPageContainerComponent from './pages/frontPage/frontPage.container';
 import RegistrationPageContainer from './pages/registrationPage/registrationPage.container';
-import { menuPresenter, registrationPageController, routingService } from './shared/composition';
+import { menuPresenter, registrationPageController, routingService, postsPresenter } from './shared/composition';
 
 function App() {
   return (
     <div className="app">
       {routingService.createRoutes([
-        { '/': <FrontPageContainerComponent menuPresenter={menuPresenter} /> },
+        { '/': <FrontPageContainerComponent presenters={{ postsPresenter, menuPresenter }} /> },
         { '/register': <RegistrationPageContainer controller={registrationPageController} /> },
       ])}
     </div>
