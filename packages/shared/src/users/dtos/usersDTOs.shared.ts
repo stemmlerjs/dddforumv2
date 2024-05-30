@@ -21,7 +21,8 @@ export type UserDTO = {
 
 type CreateUserSuccess = Response<UserDTO, true, null>;
 
-type AccountAlreadyExists = Response<undefined, false, 'Failure'>;
-type UsernameTaken = Response<undefined, false, 'Failure'>;
+type AccountAlreadyExists = Response<undefined, false, 'Account already exists'>;
+type UsernameTaken = Response<undefined, false, 'Username taken'>;
 
 export type CreateUserResponse = CreateUserSuccess | AccountAlreadyExists | UsernameTaken;
+
