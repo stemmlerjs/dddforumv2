@@ -14,11 +14,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Download frontend build artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: frontend-build-latest
-          path: ./frontend-build
+      - name: Build
+        run: npm run build
         
       - name: Deploy to Frontend Staging on Netlify
         uses: netlify/actions/cli@master
