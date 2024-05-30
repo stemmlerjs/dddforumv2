@@ -9,7 +9,6 @@ on:
 jobs:
   deploy-staging:
     runs-on: ubuntu-latest
-    needs: [lint-build-test-archive]
 
     steps:
       - name: Checkout repository
