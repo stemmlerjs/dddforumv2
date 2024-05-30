@@ -38,5 +38,3 @@ jobs:
           path: ./packages/frontend/dist
           # Customize Artifact Retention Period
           retention-days: 2
-
-
