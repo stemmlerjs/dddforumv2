@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "clean": "rimraf ./dist",
-    "build": "npm run clean && ts-node build-script.ts",
-    "start:dev": "cross-env BROWSER=none PORT=3001 BUILD_PATH='./dist' react-scripts start"
+    "build": "npm run clean && cross-env NODE_ENV=staging ts-node scripts.ts build",
+    "start:dev": "cross-env NODE_ENV=development && ts-node scripts.ts start"
   },
   "browserslist": {
     "production": [
@@ -21,7 +21,6 @@
   },
   "dependencies": {
     "@dddforum/shared": "^0.1.0",
-    "axios": "^1.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.14.1",
@@ -31,12 +30,15 @@
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
-    "@types/axios": "^0.14.0",
     "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.6",
+    "@vitejs/plugin-react": "^4.0.4",
     "identity-obj-proxy": "^3.0.0",
     "jest-environment-jsdom": "^29.6.1",
     "puppeteer": "^20.8.0",
-    "react-scripts": "5.0.1"
+    "vite": "^4.4.9",
+    "vite-plugin-checker": "^0.6.1",
+    "vite-plugin-env-compatible": "^1.1.1",
+    "vite-plugin-svgr": "^3.2.0"
   }
 }
